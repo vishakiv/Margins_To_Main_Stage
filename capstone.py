@@ -5,8 +5,8 @@ import plotly.io as pio
 
 # Set up the app title and layout
 st.set_page_config(
-    page_title="From Margins to Main Stage: The Rise of Women's Football",
-    layout="wide",  
+    page_title="From Margins to Main Stage: The Rise of Women's Football"
+    #layout="wide",  
 )
 #Using wide layout with adjusted margins
 st.markdown(
