@@ -3,6 +3,20 @@ import pandas as pd
 import plotly.express as px
 import plotly.io as pio
 
+# Set Open Graph metadata using raw HTML
+st.markdown(
+    """
+    <meta property="og:image" content="https://imgur.com/a/prag7rT" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:title" content="From Margins to Main Stage" />
+    <meta property="og:description" content="A data story on the rise of women's football." />
+    <meta property="og:url" content="https://frommarginstomainstage.streamlit.app/" />
+    """,
+    unsafe_allow_html=True
+)
+
+
 # Set up the app title and layout
 st.set_page_config(
     page_title="From Margins to Main Stage: The Rise of Women's Football"
