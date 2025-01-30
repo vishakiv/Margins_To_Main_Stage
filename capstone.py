@@ -3,6 +3,14 @@ import pandas as pd
 import plotly.express as px
 import plotly.io as pio
 
+
+# Set up the app title and layout
+st.set_page_config(
+    page_title="From Margins to Main Stage: The Rise of Women's Football"
+    #layout="wide",  
+
+)
+
 # Set Open Graph metadata using raw HTML
 st.markdown(
     """
@@ -16,13 +24,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
-# Set up the app title and layout
-st.set_page_config(
-    page_title="From Margins to Main Stage: The Rise of Women's Football"
-    #layout="wide",  
-)
-#Using wide layout with adjusted margins
 st.markdown(
     """
     <style>
