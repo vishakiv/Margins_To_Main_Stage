@@ -3,7 +3,6 @@ import pandas as pd
 import plotly.express as px
 import plotly.io as pio
 
-#Chapter 3 
 
 st.markdown(
     """
@@ -97,7 +96,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.title("3 - On The Pitch")
+st.title("3. On The Pitch")
 st.divider()
 
 

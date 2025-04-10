@@ -48,7 +48,7 @@ st.markdown(
     }
     /* Style for pull quotes */
     .pull-quote {
-        background-color: #f9f9f9;
+        background-color: #ffffff;
         border-left: 5px solid #2a76d9;
         padding: 1rem;
         margin: 1rem 0;

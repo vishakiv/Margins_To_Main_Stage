@@ -45,7 +45,7 @@ st.markdown(
     }
     /* Style for pull quotes */
     .pull-quote {
-        background-color: #f9f9f9;
+        background-color: #ffffff;
         border-left: 5px solid #2a76d9;
         padding: 1rem;
         margin: 1rem 0;
@@ -102,7 +102,10 @@ st.title("2. Scaling Up")
 
 st.write(
     """
-    Considering the challenges women faced to play footbal
+    Considering the historical challenges women have faced in sport, it’s no surprise that the FIFA Women’s World Cup began on a much smaller scale than the men’s tournament.
+
+    The inaugural event, held in China in 1991, featured just 12 teams and received minimal attention in terms of marketing, sponsorship, and investment.
+
     """
 )
 
@@ -153,6 +156,20 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
+
+st.write(
+    """
+    Over time, the size of the women’s competition has grown steadily, with the latest edition held in 2023 in 
+    Australia and New Zealand having 32 teams. 
+
+    This is important for a number of reasons. It opens the door for more countries — especially from underrepresented regions — to participate, helping to globalize the game and spotlight emerging footballing nations.
+    Competitions like the World Cup bring media attention, and are often the catalyst for funding, national training programs, and visibility.
+    More teams also mean more players on the world stage, leading to more role models for young girls and a broader range of stories across diverse cultures and contexts.
+
+    """
+)
+
+
 
 st.markdown(
     """
@@ -227,8 +244,18 @@ st.plotly_chart(fig_2,use_container_width=True)
 
 
 container = st.container(border=True)
-container.markdown("<span style='font-size:20px; font-weight:bold; '>At the next :blue[World Cup in 2027], held in Brazil, the number of teams will :blue[increase] from :blue[32 to 48], following a similar change in the Men's format.</span>", 
+container.markdown("<span style='font-size:18px; '>At the next :blue[World Cup in 2027], held in Brazil, the number of teams will :blue[increase] from :blue[32 to 48], following a similar change in the Men's format.</span>", 
     unsafe_allow_html=True)
+
+
+st.write(
+    """
+Team representation from CONCACAF nations has increased by 600% — from 1 team in 1991 to 6 teams in recent tournaments. African nations have also seen significant progress, with a 400% rise in representation — growing from 1 team to 4.
+
+This highlights the growing geographical diversity of the Women’s World Cup over time.
+
+    """
+)
 
 
 st.markdown(
