@@ -8,94 +8,20 @@ import plotly.io as pio
 st.markdown(
     """
     <style>
-    /* Style for title section */
-    .title-section {
-        background-color: #000000; /* Black background */
-        padding: 2rem;
-        text-align: center;
-        font-family: 'Georgia', serif;
-    }
-    .title-section h1 {
-        font-family: 'Helvetica-Bold';
-        font-size: 2rem;
-        color: #FFFFFF; /* White text */
-    }
-    .title-section p {
-        font-size: 1.2rem;
-        color: #FFFFFF; /* White text */
-        margin-bottom: 3rem;
-    }
-    /* Centered and narrower margin for text */
-    .centered-text {
-        max-width: 800px;
-        margin: 0 auto;  /* Center horizontally */
-        text-align: left;
-        font-family: 'Georgia', serif;
-        line-height: 1.6;
-    }
-    .centered-text h1 {
-        font-size: 2.5rem;
-        color: #333333;
-        margin-bottom: 1rem;
-    }
-    .centered-text p {
-        font-size: 1.2rem;
-        color: #666666;
-        margin-bottom: 2rem;
-    }
     /* Style for pull quotes */
     .pull-quote {
-        background-color: #f9f9f9;
+        background-color: #ffffff;
         border-left: 5px solid #2a76d9;
         padding: 1rem;
         margin: 1rem 0;
         font-style: italic;
         color: #444444;
-        font-family: 'Helvetica', sans-serif;
-        font-size: 24px;
+        font-size: 22px;
     }
-
-    /* Style for image and text section */
-    .image-section img {
-        width: 80%;
-        height: auto;
-        margin-bottom: 1rem;
-    }
-
-    .image-section .text {
-        font-family: 'Arial', sans-serif;
-        font-size: 1rem;
-        color: #333333;
-        line-height: 1.5;
-    }
-
-    /* Style for bottom-right text */
-    .bottom-right-text {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        font-size: 1rem;
-        color: #f8e86f; /* Yellow text */
-        font-family: 'Georgia', serif;
-    }
-
-    </style>
     """,
     unsafe_allow_html=True
 )
-st.markdown(
-    """
-    <style>
-    /* Set global font size for markdown texts */
-    .markdown-text {
-        font-size: 22px;  
-        font-family: 'Helvetica', sans-serif; 
-        color: #333333;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+
 
 st.title("5 - Equality Drive")
 st.divider()
@@ -179,6 +105,8 @@ st.markdown(
 
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
+
+teams = pd.read_csv("data/teams_updated.csv",index_col=0)
 
 gender_counts = teams.groupby(['Year', 'Gender']).size().reset_index(name='Count')
 

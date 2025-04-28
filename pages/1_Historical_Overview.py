@@ -6,46 +6,9 @@ import plotly.io as pio
 
 st.set_page_config(page_title="Historical Overview")
 
-st.markdown("# 1. Context Matters")
-
 st.markdown(
     """
     <style>
-    /* Style for title section */
-    .title-section {
-        background-color: #000000; /* Black background */
-        padding: 2rem;
-        text-align: center;
-        font-family: 'Georgia', serif;
-    }
-    .title-section h1 {
-        font-family: 'Helvetica-Bold';
-        font-size: 2rem;
-        color: #FFFFFF; /* White text */
-    }
-    .title-section p {
-        font-size: 1.2rem;
-        color: #FFFFFF; /* White text */
-        margin-bottom: 3rem;
-    }
-    /* Centered and narrower margin for text */
-    .centered-text {
-        max-width: 800px;
-        margin: 0 auto;  /* Center horizontally */
-        text-align: left;
-        font-family: 'Georgia', serif;
-        line-height: 1.6;
-    }
-    .centered-text h1 {
-        font-size: 2.5rem;
-        color: #333333;
-        margin-bottom: 1rem;
-    }
-    .centered-text p {
-        font-size: 1.2rem;
-        color: #666666;
-        margin-bottom: 2rem;
-    }
     /* Style for pull quotes */
     .pull-quote {
         background-color: #ffffff;
@@ -54,62 +17,26 @@ st.markdown(
         margin: 1rem 0;
         font-style: italic;
         color: #444444;
-        font-family: 'Helvetica', sans-serif;
-        font-size: 24px;
+        font-size: 22px;
     }
-
-    /* Style for image and text section */
-    .image-section img {
-        width: 80%;
-        height: auto;
-        margin-bottom: 1rem;
-    }
-
-    .image-section .text {
-        font-family: 'Arial', sans-serif;
-        font-size: 1rem;
-        color: #333333;
-        line-height: 1.5;
-    }
-
-    /* Style for bottom-right text */
-    .bottom-right-text {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        font-size: 1rem;
-        color: #f8e86f; /* Yellow text */
-        font-family: 'Georgia', serif;
-    }
-
-    </style>
     """,
     unsafe_allow_html=True
 )
-st.markdown(
-    """
-    <style>
-    /* Set global font size for markdown texts */
-    .markdown-text {
-        font-size: 22px;  
-        font-family: 'Helvetica', sans-serif; 
-        color: #333333;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+
+st.markdown("# 1. Context Matters")
 
 
 st.image("assets/images/dickkerrladies.png",caption="Dick, Kerr Ladies regularly played to large crowds of thousands in the 1920-21 season. Source: National Football Museum")
 
-st.write(
+
+st.markdown(
     """
-    The Dick, Kerr Ladies, founded in 1917 was one of the first recognised women's international teams.
+    <div style="text-align: left; font-size: 22px;">
+    The Dick, Kerr Ladies, founded in 1917, was one of the first recognised women's international teams.
     On Boxing Day, 1920  the team met St Helens Ladies at Everton's Goodison Park, drawing a record crowd for domestic women's football of 53,000 - a record that stood for 99 years.
     However, in 1921, spooked by the success of the women's game, The English Football Association, decided it was not a good idea for women to play football.
     On December 5, 1921, just under a year after the spectacularly successful match at Goodison Park, the FA banned women from using its grounds. Other countries soon followed suit.
-    """
+     </div>""", unsafe_allow_html=True
 )
 
 st.markdown(
@@ -117,23 +44,29 @@ st.markdown(
     <div class="pull-quote">
         "There is a general feeling that football is no game for women. It is too strenous, that being the view of many famous specialists.”<br>- Sheffield Daily Telegraph, 9 December 1921
     </div>
-    """,
-    unsafe_allow_html=True,
+    """, unsafe_allow_html=True,
 )
 
 st.write(
     """
+    
+    """
+)
+
+st.markdown(
+    """
+    <div style="text-align: left; font-size: 22px;">
     The chart below highlights a select sample of countries in which women's football was banned. I have chosen
     these nations deliberately due to their status as traditional powerhouses in men's international football - 
     yet that success and visibility did not extend to their women’s teams, revealing a clear disparity in support, recognition, and opportunity.
-    """
+     </div>""", unsafe_allow_html=True
 )
          
 
 
 st.markdown(
     """
-    <h1 style="font-size: 30px; color: black; text-align: left; font-family: 'Helvetica-Bold';">
+    <h1 style="font-size: 30px; color: black; text-align: left;">
         The Dark Ages
     </h1>
     """,
@@ -206,14 +139,15 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-st.write(
+
+st.markdown(
     """
-    Bans did not mean that women were forbidden from the playing the sport outright.
+    <div style="text-align: left; font-size: 22px;">
+     Bans did not mean that women were forbidden from the playing the sport outright.
     Instead, female teams were banned from playing in stadiums, which resulted in a massive downturn
     in attendance and visibility. Teams were left with no choice but to play in local parks and fields. 
-    """
+     </div>""", unsafe_allow_html=True
 )
-
 
 # st.markdown(
 #     """

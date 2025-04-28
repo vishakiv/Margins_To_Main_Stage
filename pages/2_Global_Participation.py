@@ -3,8 +3,6 @@ import pandas as pd
 import plotly.express as px
 import plotly.io as pio
 
-# Chapter 2
-
 st.markdown(
     """
     <style>
