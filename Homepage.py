@@ -97,7 +97,3 @@ st.markdown(
     - Visualizations: created with Plotly
       </div>""", unsafe_allow_html=True
 )
-
-
-
-#streamlit run capstone.py

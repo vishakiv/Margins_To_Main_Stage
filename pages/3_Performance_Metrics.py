@@ -7,94 +7,20 @@ import plotly.io as pio
 st.markdown(
     """
     <style>
-    /* Style for title section */
-    .title-section {
-        background-color: #000000; /* Black background */
-        padding: 2rem;
-        text-align: center;
-        font-family: 'Georgia', serif;
-    }
-    .title-section h1 {
-        font-family: 'Helvetica-Bold';
-        font-size: 2rem;
-        color: #FFFFFF; /* White text */
-    }
-    .title-section p {
-        font-size: 1.2rem;
-        color: #FFFFFF; /* White text */
-        margin-bottom: 3rem;
-    }
-    /* Centered and narrower margin for text */
-    .centered-text {
-        max-width: 800px;
-        margin: 0 auto;  /* Center horizontally */
-        text-align: left;
-        font-family: 'Georgia', serif;
-        line-height: 1.6;
-    }
-    .centered-text h1 {
-        font-size: 2.5rem;
-        color: #333333;
-        margin-bottom: 1rem;
-    }
-    .centered-text p {
-        font-size: 1.2rem;
-        color: #666666;
-        margin-bottom: 2rem;
-    }
     /* Style for pull quotes */
     .pull-quote {
-        background-color: #f9f9f9;
+        background-color: #ffffff;
         border-left: 5px solid #2a76d9;
         padding: 1rem;
         margin: 1rem 0;
         font-style: italic;
         color: #444444;
-        font-family: 'Helvetica', sans-serif;
-        font-size: 24px;
+        font-size: 22px;
     }
-
-    /* Style for image and text section */
-    .image-section img {
-        width: 80%;
-        height: auto;
-        margin-bottom: 1rem;
-    }
-
-    .image-section .text {
-        font-family: 'Arial', sans-serif;
-        font-size: 1rem;
-        color: #333333;
-        line-height: 1.5;
-    }
-
-    /* Style for bottom-right text */
-    .bottom-right-text {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        font-size: 1rem;
-        color: #f8e86f; /* Yellow text */
-        font-family: 'Georgia', serif;
-    }
-
-    </style>
     """,
     unsafe_allow_html=True
 )
-st.markdown(
-    """
-    <style>
-    /* Set global font size for markdown texts */
-    .markdown-text {
-        font-size: 22px;  
-        font-family: 'Helvetica', sans-serif; 
-        color: #333333;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
+
 
 st.title("3. On The Pitch")
 st.divider()
@@ -113,7 +39,7 @@ with col1:
 with col2:
     st.markdown(
         """
-        <h1 style="font-size: 30px; color: black; text-align: left; font-family: 'Helvetica-Bold';">
+        <h1 style="font-size: 30px; color: black; text-align: left;">
             Squad Goals: The US Women's National Team
         </h1>
         """,
@@ -125,22 +51,22 @@ with col2:
 
     # Add text to each "box" with styling
     left.markdown(
-        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>4</span><br><span style='font-size:14px;'>Number of World Cup Wins<br>(Rank #1)</span>", 
+        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>4</span><br><span style='font-size:16px;'>Number of World Cup Wins<br>(Rank #1)</span>", 
         unsafe_allow_html=True
     )
     middle.markdown(
-        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>76%</span><br><span style='font-size:14px;'>Overall win percentage across WWC<br>(Rank #1)</span>", 
+        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>76%</span><br><span style='font-size:16px;'>Overall win percentage across WWC<br>(Rank #1)</span>", 
         unsafe_allow_html=True
     )
     right.markdown(
-        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>142</span><br><span style='font-size:14px;'>Total goals scored<br>(Rank #1)</span>", 
+        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>142</span><br><span style='font-size:16px;'>Total goals scored<br>(Rank #1)</span>", 
         unsafe_allow_html=True
     )
 
 
 st.markdown(
     """
-    <h1 style="font-size: 30px; color: black; text-align: left; font-family: 'Helvetica-Bold';">
+    <h1 style="font-size: 30px; color: black; text-align: left;">
        Cream of the crop
     </h1>
     """,
@@ -269,7 +195,7 @@ expander.write('''
 
 st.markdown(
     """
-    <h1 style="font-size: 30px; color: black; text-align: left; font-family: 'Helvetica-Bold';">
+    <h1 style="font-size: 30px; color: black; text-align: left;">
        Climbing the ladder
     </h1>
     """,

@@ -22,7 +22,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-
 st.title("5 - Equality Drive")
 st.divider()
 
@@ -37,7 +36,7 @@ st.markdown(
 
 st.markdown(
     """
-    <h1 style="font-size: 30px; color: black; text-align: left; font-family: 'Helvetica-Bold';">
+    <h1 style="font-size: 30px; color: black; text-align: left;">
        Put Your Money Where Your Mouth Is
     </h1>
     """,
@@ -86,13 +85,13 @@ fig_9.update_layout(
 st.plotly_chart(fig_9, use_container_width=True)
 
 container = st.container(border=True)
-container.markdown("<span style='font-size:20px; font-weight:bold; '>FIFA President Gianni Infantino has announced a goal to :blue[achieve equal prize money] for the men’s and women’s World Cups by :blue[2027].</span>", 
+container.markdown("<span style='font-size:22px; '>FIFA President Gianni Infantino has announced a goal to :blue[achieve equal prize money] for the men’s and women’s World Cups by :blue[2027].</span>", 
     unsafe_allow_html=True)
 
 
 st.markdown(
     """
-    <h1 style="font-size: 30px; color: black; text-align: left; font-family: 'Helvetica-Bold';">
+    <h1 style="font-size: 30px; color: black; text-align: left;">
        Who's on the Sidelines?
     </h1>
     """,
@@ -156,6 +155,6 @@ st.plotly_chart(fig_10, use_container_width=True)
 
 
 container = st.container(border=True)
-container.markdown("<span style='font-size:20px; font-weight:bold; '>Since 2000, :blue[all but two] of the major women's football tournaments - the Women's World Cup, Women's Euros and the Olympics - have been won by :blue[female-coached teams]</span>", 
+container.markdown("<span style='font-size:22px; '>Since 2000, :blue[all but two] of the major women's football tournaments - the Women's World Cup, Women's Euros and the Olympics - have been won by :blue[female-coached teams]</span>", 
     unsafe_allow_html=True)
 

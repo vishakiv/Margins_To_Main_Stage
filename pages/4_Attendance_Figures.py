@@ -7,91 +7,16 @@ import plotly.io as pio
 st.markdown(
     """
     <style>
-    /* Style for title section */
-    .title-section {
-        background-color: #000000; /* Black background */
-        padding: 2rem;
-        text-align: center;
-        font-family: 'Georgia', serif;
-    }
-    .title-section h1 {
-        font-family: 'Helvetica-Bold';
-        font-size: 2rem;
-        color: #FFFFFF; /* White text */
-    }
-    .title-section p {
-        font-size: 1.2rem;
-        color: #FFFFFF; /* White text */
-        margin-bottom: 3rem;
-    }
-    /* Centered and narrower margin for text */
-    .centered-text {
-        max-width: 800px;
-        margin: 0 auto;  /* Center horizontally */
-        text-align: left;
-        font-family: 'Georgia', serif;
-        line-height: 1.6;
-    }
-    .centered-text h1 {
-        font-size: 2.5rem;
-        color: #333333;
-        margin-bottom: 1rem;
-    }
-    .centered-text p {
-        font-size: 1.2rem;
-        color: #666666;
-        margin-bottom: 2rem;
-    }
     /* Style for pull quotes */
     .pull-quote {
-        background-color: #f9f9f9;
+        background-color: #ffffff;
         border-left: 5px solid #2a76d9;
         padding: 1rem;
         margin: 1rem 0;
         font-style: italic;
         color: #444444;
-        font-family: 'Helvetica', sans-serif;
-        font-size: 24px;
+        font-size: 22px;
     }
-
-    /* Style for image and text section */
-    .image-section img {
-        width: 80%;
-        height: auto;
-        margin-bottom: 1rem;
-    }
-
-    .image-section .text {
-        font-family: 'Arial', sans-serif;
-        font-size: 1rem;
-        color: #333333;
-        line-height: 1.5;
-    }
-
-    /* Style for bottom-right text */
-    .bottom-right-text {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        font-size: 1rem;
-        color: #f8e86f; /* Yellow text */
-        font-family: 'Georgia', serif;
-    }
-
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-st.markdown(
-    """
-    <style>
-    /* Set global font size for markdown texts */
-    .markdown-text {
-        font-size: 22px;  
-        font-family: 'Helvetica', sans-serif; 
-        color: #333333;
-    }
-    </style>
     """,
     unsafe_allow_html=True
 )
@@ -110,7 +35,7 @@ with col2:
 
 st.markdown(
     """
-    <h1 style="font-size: 30px; color: black; text-align: left; font-family: 'Helvetica-Bold';">
+    <h1 style="font-size: 30px; color: black; text-align: left;">
        Bums on seats
     </h1>
     """,
@@ -157,7 +82,7 @@ st.plotly_chart(fig_8, use_container_width=True)
 
 st.markdown(
         """
-        <h1 style="font-size: 30px; color: black; text-align: left; font-family: 'Helvetica-Bold';">
+        <h1 style="font-size: 30px; color: black; text-align: left;">
             Record-shattering broadcasting numbers, 2023 WWC
         </h1>
         """,
@@ -166,9 +91,9 @@ st.markdown(
 
 left, middle, right = st.columns(3, border=True)
 
-left.markdown("<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>10m</span><br><span style='font-size:14px;'>Viewing audience for Colombia vs. Germany in Germany, the second highest TV audience on any channel in Germany throughout 2023 and the largest FIFA Women’s World Cup viewership in the country since the tournament was hosted in Germany in 2011.</span>", 
+left.markdown("<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>10m</span><br><span style='font-size:18px;'>Viewing audience for Colombia vs. Germany in Germany, the second highest TV audience on any channel in Germany throughout 2023 and the largest FIFA Women’s World Cup viewership in the country since the tournament was hosted in Germany in 2011.</span>", 
         unsafe_allow_html=True)
-middle.markdown("<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>53.9m</span><br><span style='font-size:14px;'>China produced the highest audience for a single match anywhere in the world for their group stage encounter with England.</span>", 
+middle.markdown("<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>53.9m</span><br><span style='font-size:18px;'>China produced the highest audience for a single match anywhere in the world for their group stage encounter with England.</span>", 
         unsafe_allow_html=True)
-right.markdown("<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>7m</span><br><span style='font-size:14px;'>Australian audience for Australia's semi-final game against England, the most-watched television programme on record in Australia</span>", 
+right.markdown("<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>7m</span><br><span style='font-size:18px;'>Australian audience for Australia's semi-final game against England, the most-watched television programme on record in Australia</span>", 
         unsafe_allow_html=True) 

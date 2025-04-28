@@ -6,41 +6,6 @@ import plotly.io as pio
 st.markdown(
     """
     <style>
-    /* Style for title section */
-    .title-section {
-        background-color: #000000; /* Black background */
-        padding: 2rem;
-        text-align: center;
-        font-family: 'Georgia', serif;
-    }
-    .title-section h1 {
-        font-family: 'Helvetica-Bold';
-        font-size: 2rem;
-        color: #FFFFFF; /* White text */
-    }
-    .title-section p {
-        font-size: 1.2rem;
-        color: #FFFFFF; /* White text */
-        margin-bottom: 3rem;
-    }
-    /* Centered and narrower margin for text */
-    .centered-text {
-        max-width: 800px;
-        margin: 0 auto;  /* Center horizontally */
-        text-align: left;
-        font-family: 'Georgia', serif;
-        line-height: 1.6;
-    }
-    .centered-text h1 {
-        font-size: 2.5rem;
-        color: #333333;
-        margin-bottom: 1rem;
-    }
-    .centered-text p {
-        font-size: 1.2rem;
-        color: #666666;
-        margin-bottom: 2rem;
-    }
     /* Style for pull quotes */
     .pull-quote {
         background-color: #ffffff;
@@ -49,35 +14,8 @@ st.markdown(
         margin: 1rem 0;
         font-style: italic;
         color: #444444;
-        font-family: 'Helvetica', sans-serif;
-        font-size: 24px;
+        font-size: 22px;
     }
-
-    /* Style for image and text section */
-    .image-section img {
-        width: 80%;
-        height: auto;
-        margin-bottom: 1rem;
-    }
-
-    .image-section .text {
-        font-family: 'Arial', sans-serif;
-        font-size: 1rem;
-        color: #333333;
-        line-height: 1.5;
-    }
-
-    /* Style for bottom-right text */
-    .bottom-right-text {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        font-size: 1rem;
-        color: #f8e86f; /* Yellow text */
-        font-family: 'Georgia', serif;
-    }
-
-    </style>
     """,
     unsafe_allow_html=True
 )
@@ -100,12 +38,19 @@ st.title("2. Scaling Up")
 
 st.write(
     """
-    Considering the historical challenges women have faced in sport, it’s no surprise that the FIFA Women’s World Cup began on a much smaller scale than the men’s tournament.
-
-    The inaugural event, held in China in 1991, featured just 12 teams and received minimal attention in terms of marketing, sponsorship, and investment.
-
+    
     """
 )
+
+st.markdown(
+    """
+    <div style="text-align: left; font-size: 22px;">
+    Considering the historical challenges women have faced in sport, it’s no surprise that the FIFA Women’s World Cup began on a much smaller scale than the men’s tournament.  
+    The inaugural event, held in China in 1991, featured just 12 teams and received minimal attention in terms of marketing, sponsorship, and investment.
+
+     </div>""", unsafe_allow_html=True
+)
+
 
 # Create two columns with equal width
 col1, col2 = st.columns([1, 1])
@@ -114,7 +59,7 @@ col1, col2 = st.columns([1, 1])
 with col1:
     st.markdown(
         """
-        <h1 style="font-size: 30px; color: black; text-align: left; font-family: 'Helvetica-Bold';">
+        <h1 style="font-size: 30px; color: black; text-align: left;">
             The 1991 WWC in Numbers
         </h1>
         """,
@@ -125,15 +70,15 @@ with col1:
 
     # Add text to each "box" with styling
     left.markdown(
-        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>80</span><br><span style='font-size:14px;'>Minutes played each game</span>", 
+        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>80</span><br><span style='font-size:16px;'>Minutes played each game</span>", 
         unsafe_allow_html=True
     )
     middle.markdown(
-        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>1</span><br><span style='font-size:14px;'>Sponsor for the entire tournament: M&Ms</span>", 
+        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>1</span><br><span style='font-size:16px;'>Sponsor for the entire tournament: M&Ms</span>", 
         unsafe_allow_html=True
     )
     right.markdown(
-        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>Zero</span><br><span style='font-size:14px;'>Number of TV channels in the US screening the final, where US beat Norway 2-1</span>", 
+        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>Zero</span><br><span style='font-size:16px;'>Number of TV channels in the US screening the final, where US beat Norway 2-1</span>", 
         unsafe_allow_html=True
     )
 
@@ -155,23 +100,22 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-st.write(
+st.markdown(
     """
+    <div style="text-align: left; font-size: 22px;">
     Over time, the size of the women’s competition has grown steadily, with the latest edition held in 2023 in 
-    Australia and New Zealand having 32 teams. 
-
-    This is important for a number of reasons. It opens the door for more countries — especially from underrepresented regions — to participate, helping to globalize the game and spotlight emerging footballing nations.
+    Australia and New Zealand having 32 teams. This is important for a number of reasons. It opens the door for more countries — especially from underrepresented regions — to participate, helping to globalize the game and spotlight emerging footballing nations.
     Competitions like the World Cup bring media attention, and are often the catalyst for funding, national training programs, and visibility.
     More teams also mean more players on the world stage, leading to more role models for young girls and a broader range of stories across diverse cultures and contexts.
 
-    """
+     </div>""", unsafe_allow_html=True
 )
 
 
 
 st.markdown(
     """
-    <h1 style="font-size: 30px; color: black; text-align: left; font-family: 'Helvetica-Bold';">
+    <h1 style="font-size: 30px; color: black; text-align: left;">
         An increasingly global competition
     </h1>
     """,
@@ -242,17 +186,22 @@ st.plotly_chart(fig_2,use_container_width=True)
 
 
 container = st.container(border=True)
-container.markdown("<span style='font-size:18px; '>At the next :blue[World Cup in 2027], held in Brazil, the number of teams will :blue[increase] from :blue[32 to 48], following a similar change in the Men's format.</span>", 
+container.markdown("<span style='font-size:22px; '>At the next :blue[World Cup in 2027], held in Brazil, the number of teams will :blue[increase] from :blue[32 to 48], following a similar change in the Men's format.</span>", 
     unsafe_allow_html=True)
 
 
 st.write(
     """
-Team representation from CONCACAF nations has increased by 600% — from 1 team in 1991 to 6 teams in recent tournaments. African nations have also seen significant progress, with a 400% rise in representation — growing from 1 team to 4.
-
-This highlights the growing geographical diversity of the Women’s World Cup over time.
 
     """
+)
+
+st.markdown(
+    """
+    <div style="text-align: left; font-size: 22px;">
+    Team representation from CONCACAF nations has increased by 600% — from 1 team in 1991 to 6 teams in recent tournaments. African nations have also seen significant progress, with a 400% rise in representation — growing from 1 team to 4.<br><br>This highlights the growing geographical diversity of the Women’s World Cup over time.
+
+     </div>""", unsafe_allow_html=True
 )
 
 
