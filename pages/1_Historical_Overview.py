@@ -11,7 +11,6 @@ st.markdown(
     <style>
     /* Style for pull quotes */
     .pull-quote {
-        background-color: #ffffff;
         border-left: 5px solid #2a76d9;
         padding: 1rem;
         margin: 1rem 0;
@@ -32,10 +31,20 @@ st.image("assets/images/dickkerrladies.png",caption="Dick, Kerr Ladies regularly
 st.markdown(
     """
     <div style="text-align: left; font-size: 22px;">
+
+    Women have been playing football since the 1800s. And not quietly, either. 
+    
+    In the early 20th century, crowds in their thousands came to watch women's games in England.
     The Dick, Kerr Ladies, founded in 1917, was one of the first recognised women's international teams.
-    On Boxing Day, 1920  the team met St Helens Ladies at Everton's Goodison Park, drawing a record crowd for domestic women's football of 53,000 - a record that stood for 99 years.
-    However, in 1921, spooked by the success of the women's game, The English Football Association, decided it was not a good idea for women to play football.
-    On December 5, 1921, just under a year after the spectacularly successful match at Goodison Park, the FA banned women from using its grounds. Other countries soon followed suit.
+    On Boxing Day, 1920, the team met St Helens Ladies at Everton's Goodison Park, drawing a record crowd for domestic women's football of 53,000 - a record that stood for 99 years.
+
+
+    This was a problem for the men in suits at The English Football Association. Women's football was too popular, and in terms of profit and attendance, was becoming a rival to the men's game.
+    The huge sums of money being raised at women's games were outside the control and jurisdiciton of the FA, and were often being channelled towards political and working-class causes antithetical to the establishment.
+    
+    And there were, of course, still strong prevailing ideas about what were and were not considered suitable activities for women in the public sphere.
+
+    
      </div>""", unsafe_allow_html=True
 )
 
@@ -56,9 +65,12 @@ st.write(
 st.markdown(
     """
     <div style="text-align: left; font-size: 22px;">
-    The chart below highlights a select sample of countries in which women's football was banned. I have chosen
-    these nations deliberately due to their status as traditional powerhouses in men's international football - 
-    yet that success and visibility did not extend to their women’s teams, revealing a clear disparity in support, recognition, and opportunity.
+
+    On December 5, 1921, just under a year after the spectacularly successful match at Goodison Park, the FA banned women from using its grounds, effectively decimating the game. Other countries soon followed suit. 
+
+    This chart does not represent the full list of countries in which women's football was banned, but rather a small selection -
+    I have chosen these nations deliberately due to their status as traditional powerhouses in men's international football.
+    Yet that success and visibility did not extend to their women’s teams, revealing a clear disparity in support, recognition, and opportunity.
      </div>""", unsafe_allow_html=True
 )
          
@@ -79,7 +91,7 @@ st.markdown(
 
 
 data = {
-    "Country": ["England", "Germany", "Brazil", "France", "Spain"],
+    "Country": ["England 🏴󠁧󠁢󠁥󠁮󠁧󠁿", "Germany 🇩🇪", "Brazil 🇧🇷", "France 🇫🇷", "Spain 🇪🇸"],
     "Start": ["1921", "1955", "1941", "1932", "1935"],
     "End": ["1971", "1970", "1981", "1975", "1980"]
 }
@@ -105,15 +117,16 @@ fig = px.timeline(
 )
 
 fig.update_layout(
-    xaxis=dict(title='',showgrid=False,tickfont=dict(size=14)),
-    yaxis=dict(title="",automargin=True,tickfont=dict(size=14)), 
+    #xaxis=dict(title='',showgrid=False,tickfont=dict(size=14)),
+    #yaxis=dict(title="",automargin=True,tickfont=dict(size=14)), 
     template="plotly_white",
     width=1200,
     height=300,
     font=dict(
-        family="Helvetica",  
-        size=18, 
-        color="black"),  
+        #family="Helvetica",  
+        size=16, 
+        #color="black"
+        ),  
     showlegend=False,
     bargap=0.1
 )
@@ -143,9 +156,7 @@ st.markdown(
 st.markdown(
     """
     <div style="text-align: left; font-size: 22px;">
-     Bans did not mean that women were forbidden from the playing the sport outright.
-    Instead, female teams were banned from playing in stadiums, which resulted in a massive downturn
-    in attendance and visibility. Teams were left with no choice but to play in local parks and fields. 
+    As we’ll see, the five countries listed above—Germany being a possible exception—were not strong contenders in international tournaments until the past decade. It took them a long time to catch up.
      </div>""", unsafe_allow_html=True
 )
 
