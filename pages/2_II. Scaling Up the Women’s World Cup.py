@@ -32,24 +32,89 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.title("2. Scaling Up")
-# st.divider()
+st.title("II. Scaling Up the Women’s World Cup")
 
-st.write(
-    """
-    
-    """
-)
 
 st.markdown(
     """
     <div style="text-align: left; font-size: 22px;">
-    Considering the historical challenges women have faced in sport, it’s no surprise that the FIFA Women’s World Cup began on a much smaller scale than the men’s tournament.  
-    The inaugural event, held in China in 1991, featured just 12 teams and received minimal attention in terms of marketing, sponsorship, and investment.
+    Considering the structural barriers put in place to prevent women from playing organised football during the mid-20th century, 
+    is it any surprise that an official FIFA Women’s World Cup was only sanctioned much later and on a much smaller scale than the men’s tournament?
+     </div>""", unsafe_allow_html=True
+)
+st.markdown(
+    """
+    <h1 style="font-size: 30px; color: black; text-align: left;">
+        Late Bloomers
+    </h1>
+    """,
+    unsafe_allow_html=True
+)
+st.markdown(
+    "<span style='font-size:20px; font-weight:bold; color:gray;'>FIFA World Cup Timeline</span>", 
+    unsafe_allow_html=True
+)
 
+#Graph 2: World Cup Timeline
+timeline = pd.read_csv("data/timeline.csv",index_col=0)
+timeline["Tournament"] = ["Men"] * 22 + ["Women"] * 9
+
+fig_1 = px.scatter(
+    timeline,
+    x="Year",
+    y="Tournament",
+    size="Teams",
+    color="Tournament",
+    hover_name="Host",
+    hover_data={"Year": True, "Teams": True, "Tournament": False},
+    template="plotly_white",
+    size_max=15,
+    color_discrete_map={"Men":"#d92ace", "Women":"#2a76d9"},
+)
+fig_1.update_layout(
+    font=dict(
+        family="Helvetica",  # Font style
+        size=14,  # General font size
+        color="black"  # Font color
+    ),
+    margin={"t": 40},
+    yaxis=dict(showgrid=True),
+    showlegend=False,
+    width=1200,
+    height=200,
+)
+fig_1.update_xaxes(title='',showgrid=True, showline=True,linewidth=2,tickfont=dict(size=14),
+        linecolor="black",tickmode='array', tickvals=[1930,1991, 1995, 1999, 2003, 2007, 2011, 2015, 2019, 2023],tickangle=90)
+fig_1.update_yaxes(
+    title="",
+    tickmode="array",
+    tickvals=["Men", "Women"],  # Adjust tick values to be based on actual y-axis categories
+    ticktext=["Men's World Cup", "Women's World Cup"],  # Add corresponding labels for better clarity
+    tickangle=0,
+    showgrid=True,
+    showline=False,
+    linewidth=2,
+    categoryorder="array",  # Use array to control the category order
+    categoryarray=["Men", "Women"],  
+    tickfont=dict(size=14)
+)
+fig_1.for_each_trace(
+    lambda trace: trace.update(marker=dict(opacity=0.2)) if trace.name == "Men" else trace.update(marker=dict(opacity=1))
+)
+
+st.plotly_chart(fig_1,use_container_width=True)
+
+
+st.markdown(
+    """
+    <div style="text-align: left; font-size: 22px;">
+    Two unofficial Women's World Cups had been staged previously: the 1970 Coppa del Mondo in Italy and the 1971 Campeonato de Fútbol Femenil in Mexico. These tournaments were 
+    widely considered to be successful from a commercial and sporting perspective, attracting tens of thousands of spectators, but it took FIFA a further 15 years before they embraced the women's game and agreed to organise
+    an official women's world championship. The inaugural FIFA Women's World Cup event, held in China in 1991, debuted with minimal fanfare, with just 12 teams and no prize money.
      </div>""", unsafe_allow_html=True
 )
 
+st.markdown("<br>", unsafe_allow_html=True)
 
 # Create two columns with equal width
 col1, col2 = st.columns([1, 1])
@@ -102,14 +167,16 @@ st.markdown(
 st.markdown(
     """
     <div style="text-align: left; font-size: 22px;">
-    Over time, the size of the women’s competition has grown steadily, with the latest edition held in 2023 in 
-    Australia and New Zealand having 32 teams. This is important for a number of reasons. It opens the door for more countries — especially from underrepresented regions — to participate, helping to globalize the game and spotlight emerging footballing nations.
-    Competitions like the World Cup bring media attention, and are often the catalyst for funding, national training programs, and visibility.
-    More teams also mean more players on the world stage, leading to more role models for young girls and a broader range of stories across diverse cultures and contexts.
+    Since its meagre beginnings, the size of the women’s competition has grown steadily, with the latest edition held in 2023 in 
+    Australia and New Zealand expanding for the first time to 32 teams. 
+    Expansion means more teams, more players on the world stage, and more role models for young girls and women across the globe. 
+    As the pinnacle of international competition, the World Cup also brings eyes on the game and increased media scrutiny, which is often the catalyst for further investment in national and regional youth training programs.  
+    At the next World Cup in 2027, held in Brazil, the number of teams will increase from 32 to 48, following a similar change in the Men's format.
 
      </div>""", unsafe_allow_html=True
 )
 
+st.markdown("<br>", unsafe_allow_html=True)
 
 
 st.markdown(
@@ -184,10 +251,6 @@ fig_2.update_layout(
 st.plotly_chart(fig_2,use_container_width=True)
 
 
-container = st.container(border=True)
-container.markdown("<span style='font-size:22px; '>At the next :blue[World Cup in 2027], held in Brazil, the number of teams will :blue[increase] from :blue[32 to 48], following a similar change in the Men's format.</span>", 
-    unsafe_allow_html=True)
-
 
 st.write(
     """
@@ -198,8 +261,11 @@ st.write(
 st.markdown(
     """
     <div style="text-align: left; font-size: 22px;">
-    Team representation from CONCACAF nations has increased by 600% — from 1 team in 1991 to 6 teams in recent tournaments. African nations have also seen significant progress, with a 400% rise in representation — growing from 1 team to 4.<br><br>This highlights the growing geographical diversity of the Women’s World Cup over time.
 
+    The make up of the participating teams is just as signficant as the number of teams.
+    
+    African representation has doubled over the last 4 editions, while 3 CONCACAF nations -  Haiti, Panama and Costa Rica - made their debuts in the 2023 tournament alone.
+    And these emerging football nations are not just making up the numbers. As we will see in the next section, the most recent World Cup demonstrated that the outsiders are increasingly competitive. 
      </div>""", unsafe_allow_html=True
 )
 
@@ -207,7 +273,7 @@ st.markdown(
 st.markdown(
     """
     <h1 style="font-size: 30px; color: black; text-align: left; font-family: 'Helvetica-Bold';">
-       Central American and African nations benefit most
+       Central American and African nations benefit most from expansion
     </h1>
     """,
     unsafe_allow_html=True

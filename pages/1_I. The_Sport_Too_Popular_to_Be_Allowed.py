@@ -4,7 +4,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.io as pio
 
-st.set_page_config(page_title="Historical Overview")
+st.set_page_config(page_title="I. The Sport Too Popular to Be Allowed")
 
 st.markdown(
     """
@@ -22,7 +22,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.markdown("# 1. Context Matters")
+st.markdown("# I. The Sport Too Popular to Be Allowed")
 
 
 st.image("assets/images/dickkerrladies.png",caption="Dick, Kerr Ladies regularly played to large crowds of thousands in the 1920-21 season. Source: National Football Museum")
@@ -56,11 +56,6 @@ st.markdown(
     """, unsafe_allow_html=True,
 )
 
-st.write(
-    """
-    
-    """
-)
 
 st.markdown(
     """
@@ -117,15 +112,11 @@ fig = px.timeline(
 )
 
 fig.update_layout(
-    #xaxis=dict(title='',showgrid=False,tickfont=dict(size=14)),
-    #yaxis=dict(title="",automargin=True,tickfont=dict(size=14)), 
     template="plotly_white",
     width=1200,
     height=300,
-    font=dict(
-        #family="Helvetica",  
-        size=16, 
-        #color="black"
+    font=dict(  
+        size=16
         ),  
     showlegend=False,
     bargap=0.1
@@ -153,73 +144,5 @@ st.markdown(
 )
 
 
-st.markdown(
-    """
-    <div style="text-align: left; font-size: 22px;">
-    As we’ll see, the five countries listed above—Germany being a possible exception—were not strong contenders in international tournaments until the past decade. It took them a long time to catch up.
-     </div>""", unsafe_allow_html=True
-)
-
-# st.markdown(
-#     """
-#     <h1 style="font-size: 30px; color: black; text-align: left; font-family: 'Helvetica-Bold';">
-#         Late Bloomers
-#     </h1>
-#     """,
-#     unsafe_allow_html=True
-# )
-# st.markdown(
-#     "<span style='font-size:20px; font-weight:bold; color:gray;'>FIFA World Cup Timeline</span>", 
-#     unsafe_allow_html=True
-# )
-
-# #Graph 2: World Cup Timeline
-# timeline = pd.read_csv("data/timeline.csv",index_col=0)
-# timeline["Tournament"] = ["Men"] * 22 + ["Women"] * 9
-
-# fig_1 = px.scatter(
-#     timeline,
-#     x="Year",
-#     y="Tournament",
-#     size="Teams",
-#     color="Tournament",
-#     hover_name="Host",
-#     hover_data={"Year": True, "Teams": True, "Tournament": False},
-#     template="plotly_white",
-#     size_max=15,
-#     color_discrete_map={"Men":"#d92ace", "Women":"#2a76d9"},
-# )
-# fig_1.update_layout(
-#     font=dict(
-#         family="Helvetica",  # Font style
-#         size=14,  # General font size
-#         color="black"  # Font color
-#     ),
-#     margin={"t": 40},
-#     yaxis=dict(showgrid=True),
-#     showlegend=False,
-#     width=1200,
-#     height=200,
-# )
-# fig_1.update_xaxes(title='',showgrid=True, showline=True,linewidth=2,tickfont=dict(size=14),
-#         linecolor="black",tickmode='array', tickvals=[1930,1991, 1995, 1999, 2003, 2007, 2011, 2015, 2019, 2023],tickangle=90)
-# fig_1.update_yaxes(
-#     title="",
-#     tickmode="array",
-#     tickvals=["Men", "Women"],  # Adjust tick values to be based on actual y-axis categories
-#     ticktext=["Men's World Cup", "Women's World Cup"],  # Add corresponding labels for better clarity
-#     tickangle=0,
-#     showgrid=True,
-#     showline=False,
-#     linewidth=2,
-#     categoryorder="array",  # Use array to control the category order
-#     categoryarray=["Men", "Women"],  
-#     tickfont=dict(size=14)
-# )
-# fig_1.for_each_trace(
-#     lambda trace: trace.update(marker=dict(opacity=0.2)) if trace.name == "Men" else trace.update(marker=dict(opacity=1))
-# )
-
-# st.plotly_chart(fig_1,use_container_width=True)
 
 

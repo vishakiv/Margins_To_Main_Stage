@@ -22,47 +22,16 @@ st.markdown(
 )
 
 
-st.title("3. On The Pitch")
-st.divider()
+st.title("3. Standing Out from the Crowd")
 
-
-col1, col2 = st.columns([1, 1])  
-
-# Left column content
-with col1:
-    st.image(
-        "assets/images/US_cele.png", 
-        caption="The USWNT celebrating their World Cup Victory in 2019. Source: Getty Images"
-    )
-
-# Right column content
-with col2:
-    st.markdown(
-        """
-        <h1 style="font-size: 30px; color: black; text-align: left;">
-            Squad Goals: The US Women's National Team
-        </h1>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    # Create three vertical "boxes" in the right column
-    left, middle, right = st.columns(3)
-
-    # Add text to each "box" with styling
-    left.markdown(
-        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>4</span><br><span style='font-size:16px;'>Number of World Cup Wins<br>(Rank #1)</span>", 
-        unsafe_allow_html=True
-    )
-    middle.markdown(
-        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>76%</span><br><span style='font-size:16px;'>Overall win percentage across WWC<br>(Rank #1)</span>", 
-        unsafe_allow_html=True
-    )
-    right.markdown(
-        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>142</span><br><span style='font-size:16px;'>Total goals scored<br>(Rank #1)</span>", 
-        unsafe_allow_html=True
-    )
-
+st.markdown(
+    """
+    <div style="text-align: left; font-size: 22px;">
+    Let's talk performance trends. Who's winning the thing? In fact, who's winning the thing, again and again?
+    The USA are way out there in this regard, having finished in the top 4 in every World Cup except one: the most recent one.
+      
+     </div>""", unsafe_allow_html=True
+)
 
 st.markdown(
     """
@@ -80,6 +49,7 @@ st.markdown(
 # Filtering teams for top 4 placings over each World Cup
 
 teams = pd.read_csv("data/teams_updated.csv",index_col=0)
+teams["Year"] = teams["Year"].astype(str)
 
 region_colors = {
     "UEFA (Europe)": "#003366",  # Dark Blue
@@ -180,17 +150,120 @@ fig_5.update_layout(
 
 st.plotly_chart(fig_5,use_container_width=True)
 
-expander = st.expander("What's behind the USA's formula for success? Explore below.")
-expander.write('''
-    The passing of **Title IX in 1972** prevented sex-based discrimination in educational institutions, leading to....
-    - Increase in girls' participation in soccer 
-    - Competitive collegiate programs
-    - Creation of a large talent pool for the national team
+winners =  teams[teams["Rank"].isin(["1"])]
+winner_counts = winners["Team"].value_counts().reset_index()
+winner_counts.columns = ["Team","Wins"]
+winner_counts["Team"] = winner_counts["Team"].map(country_to_flag)
+winner_counts = winner_counts.sort_values(by="Wins",ascending=False)
+
+st.markdown(
+    """
+    <h1 style="font-size: 30px; color: black; text-align: left;">
+       USA leads the way
+    </h1>
+    """,
+    unsafe_allow_html=True
+)
+st.markdown(
+    "<span style='font-size:20px; font-weight:bold; color:gray;'>World Cup Winners, 1991-2023</span>", 
+    unsafe_allow_html=True
+)
+
+
+fig_5_a = px.bar(winner_counts, x='Wins',
+             y='Team',
+             height=300
+            )
+fig_5_a.update_xaxes(title="",tickmode='linear', dtick=1)
+fig_5_a.update_yaxes(tickfont=dict(size=20))
+
+fig_5_a.update_layout(
+    yaxis=dict(showgrid=True),
+    template='plotly_white',
+    showlegend=True,
+    width=1000,
+    height=600
+)
+
+st.plotly_chart(fig_5_a,use_container_width=True)
+
+
+st.markdown(
+    """
+    <div style="text-align: left; font-size: 22px;">
     
-    Also...
-    - Early and sustained investment by national soccer federation     
-    - Professionalised league system dating back to 2009    
-''')
+    A few teams have had periods of success, such as Germany's consecutive wins in the 2003 and 2007, and Sweden's three top 3 placings across four editions of the tournament, but 
+    the USA's consistency is unrivalled.
+
+    From the dropdown box below, you can select a team to view their placings across all the World Cups they have been participated in.
+
+     </div>""", unsafe_allow_html=True
+)
+
+
+team_names = sorted(teams["Team"].unique())
+df_rankings = teams[["Team","Rank","Year"]]
+
+selected_team = st.selectbox("Choose a team", team_names)
+
+team_data = df_rankings[df_rankings["Team"] == selected_team].sort_values("Year")
+
+st.dataframe(team_data)
+
+st.markdown(
+    """
+    <div style="text-align: left; font-size: 22px;">
+    What is behind the USA's formula for success? The passing of Title IX in 1972 prevented sex-based discrimination in educational institutions, leading to increased girls' participation in soccer,
+    competitive collegiate programs, and the creation of a large talent pool for the national team. An progressive approach to gender equality in sport and education.. and voila!
+
+     </div>""", unsafe_allow_html=True
+)
+
+st.markdown(
+    """
+    <div style="text-align: left; font-size: 22px;">
+        
+
+
+     </div>""", unsafe_allow_html=True
+)
+
+col1, col2 = st.columns([1, 1])  
+
+# Left column content
+with col1:
+    st.image(
+        "assets/images/US_cele.png", 
+        caption="The USWNT celebrating their World Cup Victory in 2019. Source: Getty Images"
+    )
+
+# Right column content
+with col2:
+    st.markdown(
+        """
+        <h1 style="font-size: 30px; color: black; text-align: left;">
+            Squad Goals: The US Women's National Team
+        </h1>
+        """,
+        unsafe_allow_html=True,
+    )
+
+    # Create three vertical "boxes" in the right column
+    left, middle, right = st.columns(3)
+
+    # Add text to each "box" with styling
+    left.markdown(
+        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>4</span><br><span style='font-size:16px;'>Number of World Cup Wins<br>(Rank #1)</span>", 
+        unsafe_allow_html=True
+    )
+    middle.markdown(
+        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>76%</span><br><span style='font-size:16px;'>Overall win percentage across WWC<br>(Rank #1)</span>", 
+        unsafe_allow_html=True
+    )
+    right.markdown(
+        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>142</span><br><span style='font-size:16px;'>Total goals scored<br>(Rank #1)</span>", 
+        unsafe_allow_html=True
+    )
 
 
 st.markdown(
@@ -369,4 +442,79 @@ with col2:
     st.plotly_chart(fig_7, use_container_width=True, key="draw_percentage")
 
 
+st.title("4 - All Eyes on the Women's Game")
+st.divider()
 
+col1, col2 = st.columns([2, 1])  # Two equal-width columns
+with col1:
+    st.image("assets/images/stadium.png", caption="New Zealand vs Norway, Matchday 1, WWC 2023. Source: FIFA")
+with col2:
+    st.write(
+        """
+        """
+    )
+
+st.markdown(
+    """
+    <h1 style="font-size: 30px; color: black; text-align: left;">
+       Bums on seats
+    </h1>
+    """,
+    unsafe_allow_html=True
+)
+st.markdown(
+    "<span style='font-size:20px; font-weight:bold; color:gray;'>Total attendance figures per World Cup, millions</span>", 
+    unsafe_allow_html=True
+)
+
+df_women = pd.read_csv("data/world_cup_women_clean.csv",index_col=0)
+
+#Graph 6 - Line Chart: Attendance
+fig_8 = px.line(df_women,
+              x='year',
+              y='total_attendance',
+              height=500,
+              markers=True,
+               labels={"host":"Host","num_matches":"Number of Matches","total_attendance":"Total Attendance"},
+              hover_data={
+                        'year': False,          
+                        'host': True,        
+                        'num_matches': True,   
+                        'total_attendance': True}
+             )
+fig_8.update_xaxes(title='',tickmode='array', tickvals=[1991, 1995, 1999, 2003, 2007, 2011, 2015, 2019, 2023])
+fig_8.update_yaxes(title='')  
+fig_8.update_traces(mode='lines+markers', marker=dict(size=8, color='#2a76d9'))
+fig_8.update_layout(
+    margin={"t": 50},
+    font=dict(
+        family="Helvetica",  # Font style
+        size=14,  # General font size
+        color="black"  # Font color
+    ),
+    yaxis=dict(showgrid=True),
+    template='plotly_white',
+    showlegend=True,
+    width=1200,
+    height=500
+)
+
+st.plotly_chart(fig_8, use_container_width=True)
+
+st.markdown(
+        """
+        <h1 style="font-size: 30px; color: black; text-align: left;">
+            Record-shattering broadcasting numbers, 2023 WWC
+        </h1>
+        """,
+        unsafe_allow_html=True,
+)
+
+left, middle, right = st.columns(3, border=True)
+
+left.markdown("<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>10m</span><br><span style='font-size:18px;'>Viewing audience for Colombia vs. Germany in Germany, the second highest TV audience on any channel in Germany throughout 2023 and the largest FIFA Women’s World Cup viewership in the country since the tournament was hosted in Germany in 2011.</span>", 
+        unsafe_allow_html=True)
+middle.markdown("<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>53.9m</span><br><span style='font-size:18px;'>China produced the highest audience for a single match anywhere in the world for their group stage encounter with England.</span>", 
+        unsafe_allow_html=True)
+right.markdown("<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>7m</span><br><span style='font-size:18px;'>Australian audience for Australia's semi-final game against England, the most-watched television programme on record in Australia</span>", 
+        unsafe_allow_html=True) 
