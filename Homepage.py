@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.io as pio
 
-
+#CSS styling
 st.markdown(
     """
     <style>
@@ -71,3 +71,4 @@ Armoured with newly-acquired data manipulation and visualisation skills, this fo
 - What inequalities persist in women’s football at the international level?
       </div>""", unsafe_allow_html=True
 )
+

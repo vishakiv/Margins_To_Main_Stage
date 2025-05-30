@@ -7,9 +7,7 @@ import plotly.io as pio
 st.markdown(
     """
     <style>
-    /* Style for pull quotes */
     .pull-quote {
-        background-color: #ffffff;
         border-left: 5px solid #2a76d9;
         padding: 1rem;
         margin: 1rem 0;
@@ -17,6 +15,21 @@ st.markdown(
         color: #444444;
         font-size: 22px;
     }
+    .text {
+        text-align: left;
+        font-size: 22px;
+    }
+    .graph-title {
+        font-size: 30px;
+        font-weight: bold;
+        color: black; 
+        text-align: left;
+    } 
+    .graph-subtitle {
+        font-size:22px;
+        font-weight:bold;
+        color:gray;
+    }  
     """,
     unsafe_allow_html=True
 )

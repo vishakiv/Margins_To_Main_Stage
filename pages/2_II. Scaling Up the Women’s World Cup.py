@@ -3,10 +3,10 @@ import pandas as pd
 import plotly.express as px
 import plotly.io as pio
 
+#styling using class-based CSS
 st.markdown(
     """
     <style>
-    /* Style for pull quotes */
     .pull-quote {
         border-left: 5px solid #2a76d9;
         padding: 1rem;
@@ -15,52 +15,52 @@ st.markdown(
         color: #444444;
         font-size: 22px;
     }
-    """,
-    unsafe_allow_html=True
-)
-st.markdown(
-    """
-    <style>
-    /* Set global font size for markdown texts */
-    .markdown-text {
-        font-size: 22px;  
-        font-family: 'Helvetica', sans-serif; 
-        color: #333333;
+    .text {
+        text-align: left;
+        font-size: 22px;
     }
-    </style>
+    .graph-title {
+        font-size: 30px;
+        font-weight: bold;
+        color: black; 
+        text-align: left;
+    } 
+    .graph-subtitle {
+        font-size:22px;
+        font-weight:bold;
+        color:gray;
+    }  
     """,
     unsafe_allow_html=True
 )
-
 st.title("II. Scaling Up the Women’s World Cup")
 
-
 st.markdown(
     """
-    <div style="text-align: left; font-size: 22px;">
+    <div class="text">
     Considering the structural barriers put in place to prevent women from playing organised football during the mid-20th century, 
-    is it any surprise that an official FIFA Women’s World Cup was only sanctioned much later and on a much smaller scale than the men’s tournament?
+    is it any surprise that an official FIFA Women’s World Cup was only sanctioned much later and on a much smaller scale than the men’s tournament?<br><br>
      </div>""", unsafe_allow_html=True
 )
 st.markdown(
     """
-    <h1 style="font-size: 30px; color: black; text-align: left;">
-        Late Bloomers
-    </h1>
+    <div class = "graph-title">
+    Late Bloomers
+    </div>
+    <div class ="graph-subtitle"> 
+    FIFA World Cup Timeline
+    </div>
     """,
-    unsafe_allow_html=True
-)
-st.markdown(
-    "<span style='font-size:20px; font-weight:bold; color:gray;'>FIFA World Cup Timeline</span>", 
     unsafe_allow_html=True
 )
 
 #Graph 2: World Cup Timeline
-timeline = pd.read_csv("data/timeline.csv",index_col=0)
-timeline["Tournament"] = ["Men"] * 22 + ["Women"] * 9
+def world_cup_timeline(data):
+    
+    data["Tournament"] = ["Men"] * 22 + ["Women"] * 9
 
-fig_1 = px.scatter(
-    timeline,
+    fig_1 = px.scatter(
+    data,
     x="Year",
     y="Tournament",
     size="Teams",
@@ -71,7 +71,7 @@ fig_1 = px.scatter(
     size_max=15,
     color_discrete_map={"Men":"#d92ace", "Women":"#2a76d9"},
 )
-fig_1.update_layout(
+    fig_1.update_layout(
     font=dict(
         family="Helvetica",  # Font style
         size=14,  # General font size
@@ -83,9 +83,9 @@ fig_1.update_layout(
     width=1200,
     height=200,
 )
-fig_1.update_xaxes(title='',showgrid=True, showline=True,linewidth=2,tickfont=dict(size=14),
+    fig_1.update_xaxes(title='',showgrid=True, showline=True,linewidth=2,tickfont=dict(size=14),
         linecolor="black",tickmode='array', tickvals=[1930,1991, 1995, 1999, 2003, 2007, 2011, 2015, 2019, 2023],tickangle=90)
-fig_1.update_yaxes(
+    fig_1.update_yaxes(
     title="",
     tickmode="array",
     tickvals=["Men", "Women"],  # Adjust tick values to be based on actual y-axis categories
@@ -98,23 +98,23 @@ fig_1.update_yaxes(
     categoryarray=["Men", "Women"],  
     tickfont=dict(size=14)
 )
-fig_1.for_each_trace(
+    fig_1.for_each_trace(
     lambda trace: trace.update(marker=dict(opacity=0.2)) if trace.name == "Men" else trace.update(marker=dict(opacity=1))
 )
 
-st.plotly_chart(fig_1,use_container_width=True)
+    st.plotly_chart(fig_1,use_container_width=True)
 
+timeline = pd.read_csv("data/timeline.csv",index_col=0)
+world_cup_timeline(timeline)
 
 st.markdown(
     """
-    <div style="text-align: left; font-size: 22px;">
+    <div class="text">
     Two unofficial Women's World Cups had been staged previously: the 1970 Coppa del Mondo in Italy and the 1971 Campeonato de Fútbol Femenil in Mexico. These tournaments were 
     widely considered to be successful from a commercial and sporting perspective, attracting tens of thousands of spectators, but it took FIFA a further 15 years before they embraced the women's game and agreed to organise
-    an official women's world championship. The inaugural FIFA Women's World Cup event, held in China in 1991, debuted with minimal fanfare, with just 12 teams and no prize money.
+    an official women's world championship. The inaugural FIFA Women's World Cup event, held in China in 1991, debuted with minimal fanfare, with just 12 teams and no prize money.<br><br>
      </div>""", unsafe_allow_html=True
 )
-
-st.markdown("<br>", unsafe_allow_html=True)
 
 # Create two columns with equal width
 col1, col2 = st.columns([1, 1])
@@ -123,16 +123,16 @@ col1, col2 = st.columns([1, 1])
 with col1:
     st.markdown(
         """
-        <h1 style="font-size: 30px; color: black; text-align: left;">
+        <div class="graph-title">
             The 1991 WWC in Numbers
-        </h1>
+        </div>
         """,
         unsafe_allow_html=True,
     )
-    # Create three vertical "boxes" in the left column
+    
     left, middle, right = st.columns(3)
 
-    # Add text to each "box" with styling
+    
     left.markdown(
         "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>80</span><br><span style='font-size:16px;'>Minutes played each game</span>", 
         unsafe_allow_html=True
@@ -145,81 +145,64 @@ with col1:
         "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>Zero</span><br><span style='font-size:16px;'>Number of TV channels in the US screening the final, where US beat Norway 2-1</span>", 
         unsafe_allow_html=True
     )
-
-# Content for the right column
 with col2:
     st.image(
         "assets/images/1991.png",
         caption="A ticket for the then-titled ’The Fifa Women’s World Championship For The M&Ms Cup’ which was held in China in 1991 and sponsored by Mars confectionery company. Photograph: National Football Museum",
     )
 
-
-
 st.markdown(
     """
     <div class="pull-quote">
         “[The organisers were] afraid our ovaries were going to fall out if we played 90."<br> - USA captain April Heinrichs, 1991
     </div>
-    """,
-    unsafe_allow_html=True,
-)
-
-st.markdown(
-    """
-    <div style="text-align: left; font-size: 22px;">
+    <div class="text">
     Since its meagre beginnings, the size of the women’s competition has grown steadily, with the latest edition held in 2023 in 
     Australia and New Zealand expanding for the first time to 32 teams. 
-    Expansion means more teams, more players on the world stage, and more role models for young girls and women across the globe. 
+    Expansion means more teams, more players on the world stage, and more role models for young girls and women across the globe. <br><br>
     As the pinnacle of international competition, the World Cup also brings eyes on the game and increased media scrutiny, which is often the catalyst for further investment in national and regional youth training programs.  
-    At the next World Cup in 2027, held in Brazil, the number of teams will increase from 32 to 48, following a similar change in the Men's format.
-
+    At the next World Cup in 2027, held in Brazil, the number of teams will increase from 32 to 48, following a similar change in the Men's format.<br><br>
      </div>""", unsafe_allow_html=True
 )
 
-st.markdown("<br>", unsafe_allow_html=True)
-
-
+#graph headings and sub-headings
 st.markdown(
     """
-    <h1 style="font-size: 30px; color: black; text-align: left;">
-        An increasingly global competition
-    </h1>
+    <div class = "graph-title">
+    An increasingly global competition
+    </div>
+    <div class ="graph-subtitle"> 
+    Filter by year and hover over each country to view team information and placing
+    </div>
     """,
     unsafe_allow_html=True
 )
-st.markdown(
-    "<span style='font-size:20px; font-weight:bold; color:gray;'>Filter by year and hover over each country to view team information and placing</span>", 
-    unsafe_allow_html=True
-)
-#  Graph 3: Map - Geographic Locations'
-region_colors = {
+
+
+def geographic_map(data):
+
+    region_colors = {
     "UEFA (Europe)": "#003366",  # Dark Blue
     "CONCACAF (North and Central America)": "#FFA500",  # Orange
     "AFC (Asia)": "#FFD700",  # Yellow
     "CAF (Africa)": "#ADD8E6",  # Light Blue
     "CONMEBOL (South America)": "#008000",  # Green
-    "OFC (Oceania)": "#800080" 
-}
-
-teams = pd.read_csv("data/teams_updated.csv",index_col=0)
-
-teams_year = st.radio("Year",teams["Year"].unique(), horizontal=True)
-
-fig_2 = px.choropleth(
-    data_frame=teams[teams["Year"]==teams_year], 
+    "OFC (Oceania)": "#800080" #Purple
+    }
+    teams_year = st.radio("Year",data["Year"].unique(), horizontal=True)
+    fig_2 = px.choropleth(
+    data_frame=data[data["Year"]==teams_year], 
     locations="ISO_Code", 
     projection='kavrayskiy7',
     color="Region", 
     hover_name="Team_with_Flag",
     color_discrete_map=region_colors,
-    #animation_frame = "Year",
     hover_data = {'Team': False,'ISO_Code': False, 'Rank': True,'Year': True,'Manager': True },
     labels = {"Rank":"Placing"}
-)
+    )
 
-fig_2.update_layout(
+    fig_2.update_layout(
     geo=dict(
-        #projection_scale=5,
         showland=True,
         landcolor="rgb(243, 243, 243)",
         showocean=True,
@@ -227,7 +210,7 @@ fig_2.update_layout(
     ),
 )
 
-fig_2.update_layout(
+    fig_2.update_layout(
     font=dict(
         family="Helvetica",  # Font style
         size=14,  # General font size
@@ -239,28 +222,19 @@ fig_2.update_layout(
     legend=dict(
         orientation="h",  # Horizontal legend
         yanchor="bottom",  # Anchor legend vertically at the bottom
-        y=1.02,            # Position legend slightly above the graph
-        xanchor="left",  # Center legend horizontally
-        #x=0.5              # Position legend in the center
+        y=1.02,            # Position legend slightly above the graph   
     ),
     width=1200,
     height=600,
-    #margin=dict(t=50),
-)
+    )
 
-st.plotly_chart(fig_2,use_container_width=True)
-
-
-
-st.write(
-    """
-
-    """
-)
+    st.plotly_chart(fig_2,use_container_width=True)
+teams = pd.read_csv("data/teams_updated.csv",index_col=0)
+geographic_map(teams)
 
 st.markdown(
     """
-    <div style="text-align: left; font-size: 22px;">
+    <div class="text">
 
     The make up of the participating teams is just as signficant as the number of teams.
     
@@ -269,27 +243,37 @@ st.markdown(
      </div>""", unsafe_allow_html=True
 )
 
-
+#graph headings and sub-headings
 st.markdown(
     """
-    <h1 style="font-size: 30px; color: black; text-align: left; font-family: 'Helvetica-Bold';">
-       Central American and African nations benefit most from expansion
-    </h1>
+    <div class = "graph-title">
+    Central American and African nations benefit most from expansion
+    </div>
+    <div class ="graph-subtitle"> 
+    Geographical representation of teams over time by region
+    </div>
     """,
     unsafe_allow_html=True
 )
-st.markdown(
-    "<span style='font-size:20px; font-weight:bold; color:gray;'>Geographical representation of teams over time by region</span>", 
-    unsafe_allow_html=True
-)
 
-# Graph 4: Area chart - regional representation
-teams_region = teams.groupby(['Year', 'Region']).agg(
+
+def area_chart(data): 
+
+    region_colors = {
+    "UEFA (Europe)": "#003366",  # Dark Blue
+    "CONCACAF (North and Central America)": "#FFA500",  # Orange
+    "AFC (Asia)": "#FFD700",  # Yellow
+    "CAF (Africa)": "#ADD8E6",  # Light Blue
+    "CONMEBOL (South America)": "#008000",  # Green
+    "OFC (Oceania)": "#800080" #Purple
+    }
+
+    teams_region = data.groupby(['Year', 'Region']).agg(
     Teams_count=('Team', 'size'),
     Team_List=('Team', lambda x: ', '.join(x))
 ).reset_index()
 
-fig_3 = px.area(
+    fig_3 = px.area(
     teams_region, 
     x='Year', 
     y='Teams_count', 
@@ -304,11 +288,9 @@ fig_3 = px.area(
     color_discrete_map=region_colors
 )
 
-# Customize the x-axis ticks for years
-fig_3.update_xaxes(title='', tickmode='array', tickvals=[1991, 1995, 1999, 2003, 2007, 2011, 2015, 2019, 2023])
+    fig_3.update_xaxes(title='', tickmode='array', tickvals=[1991, 1995, 1999, 2003, 2007, 2011, 2015, 2019, 2023])
 
-# Update layout
-fig_3.update_layout(
+    fig_3.update_layout(
     font=dict(
         family="Helvetica",  
         size=14,  
@@ -328,5 +310,6 @@ fig_3.update_layout(
     height=500,
     margin=dict(l=50, r=50, t=50, b=50),
 )
-# Show the plot
-st.plotly_chart(fig_3,use_container_width=True)
+
+    st.plotly_chart(fig_3,use_container_width=True)
+area_chart(teams)

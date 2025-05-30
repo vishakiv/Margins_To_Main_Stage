@@ -48,6 +48,8 @@ st.markdown(
 prize_money = pd.read_csv("data/prize_money.csv",index_col=0)
 prize_money = prize_money.drop(columns="Unnamed: 0")
 
+
+
 #Graph 9 - Bar Chart: Prize Money Difference
 fig_9 = px.bar(
     prize_money, 

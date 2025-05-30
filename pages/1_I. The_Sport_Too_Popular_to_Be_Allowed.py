@@ -6,6 +6,7 @@ import plotly.io as pio
 
 st.set_page_config(page_title="I. The Sport Too Popular to Be Allowed")
 
+#styling using class-based CSS
 st.markdown(
     """
     <style>
@@ -36,12 +37,11 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.markdown("# I. The Sport Too Popular to Be Allowed")
-
+st.title("I. The Sport Too Popular to Be Allowed")
 
 st.image("assets/images/dickkerrladies.png",caption="Dick, Kerr Ladies regularly played to large crowds of thousands in the 1920-21 season. Source: National Football Museum")
 
-
+#†ext
 st.markdown(
     """
     <div class="text">
@@ -60,6 +60,7 @@ st.markdown(
      </div>""", unsafe_allow_html=True
 )
 
+#pull-quote
 st.markdown(
     """
     <div class="pull-quote">
@@ -68,7 +69,7 @@ st.markdown(
     """, unsafe_allow_html=True,
 )
 
-
+#text
 st.markdown(
     """
     <div class="text">
@@ -81,18 +82,13 @@ st.markdown(
      </div>""", unsafe_allow_html=True
 )
          
-
-
+#graph headings and sub-headings
 st.markdown(
+
     """
     <div class="graph-title">
     The Dark Ages
     </div>
-    """,
-    unsafe_allow_html=True
-)
-st.markdown(
-    """
     <div class="graph-subtitle">
     Timeline of Women's Football Bans by Country
     </div>
@@ -100,6 +96,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+#function
 def plot_bans_timeline(data):
     data["Duration"] = data["End"].astype(int) - data["Start"].astype(int)
     data = data.sort_values(by="Duration", ascending=True)
@@ -148,10 +145,9 @@ data = {
 }
 
 bans_df = pd.DataFrame(data)
-
 plot_bans_timeline(bans_df)
 
-
+#pull-quote
 st.markdown(
     """
     <div class="pull-quote">
