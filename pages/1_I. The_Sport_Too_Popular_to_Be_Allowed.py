@@ -9,7 +9,6 @@ st.set_page_config(page_title="I. The Sport Too Popular to Be Allowed")
 st.markdown(
     """
     <style>
-    /* Style for pull quotes */
     .pull-quote {
         border-left: 5px solid #2a76d9;
         padding: 1rem;
@@ -18,6 +17,21 @@ st.markdown(
         color: #444444;
         font-size: 22px;
     }
+    .text {
+        text-align: left;
+        font-size: 22px;
+    }
+    .graph-title {
+        font-size: 30px;
+        font-weight: bold;
+        color: black; 
+        text-align: left;
+    } 
+    .graph-subtitle {
+        font-size:22px;
+        font-weight:bold;
+        color:gray;
+    }  
     """,
     unsafe_allow_html=True
 )
@@ -30,7 +44,7 @@ st.image("assets/images/dickkerrladies.png",caption="Dick, Kerr Ladies regularly
 
 st.markdown(
     """
-    <div style="text-align: left; font-size: 22px;">
+    <div class="text">
 
     Women have been playing football since the 1800s. And not quietly, either. 
     
@@ -43,15 +57,13 @@ st.markdown(
     The huge sums of money being raised at women's games were outside the control and jurisdiciton of the FA, and were often being channelled towards political and working-class causes antithetical to the establishment.
     
     And there were, of course, still strong prevailing ideas about what were and were not considered suitable activities for women in the public sphere.
-
-    
      </div>""", unsafe_allow_html=True
 )
 
 st.markdown(
     """
     <div class="pull-quote">
-        "There is a general feeling that football is no game for women. It is too strenous, that being the view of many famous specialists.”<br>- Sheffield Daily Telegraph, 9 December 1921
+        "There is a general feeling that football is no game for women. It is too strenous, that being the view of many famous specialists.”<br><br>- Sheffield Daily Telegraph, 9 December 1921
     </div>
     """, unsafe_allow_html=True,
 )
@@ -59,7 +71,7 @@ st.markdown(
 
 st.markdown(
     """
-    <div style="text-align: left; font-size: 22px;">
+    <div class="text">
 
     On December 5, 1921, just under a year after the spectacularly successful match at Goodison Park, the FA banned women from using its grounds, effectively decimating the game. Other countries soon followed suit. 
 
@@ -73,17 +85,61 @@ st.markdown(
 
 st.markdown(
     """
-    <h1 style="font-size: 30px; color: black; text-align: left;">
-        The Dark Ages
-    </h1>
+    <div class="graph-title">
+    The Dark Ages
+    </div>
     """,
     unsafe_allow_html=True
 )
 st.markdown(
-    "<span style='font-size:22px; font-weight:bold; color:gray;'>Timeline of Women's Football Bans by Country</span>", 
+    """
+    <div class="graph-subtitle">
+    Timeline of Women's Football Bans by Country
+    </div>
+    """,
     unsafe_allow_html=True
 )
 
+def plot_bans_timeline(data):
+    data["Duration"] = data["End"].astype(int) - data["Start"].astype(int)
+    data = data.sort_values(by="Duration", ascending=True)
+
+    fig = px.timeline(
+        data,
+        x_start="Start",
+        x_end="End",
+        y="Country",
+        text="Duration",
+        template="plotly_white",
+        hover_data={
+        "Country":False,
+        "Duration":False,
+        "Start": True, 
+        "End": True}, 
+    )
+
+    fig.update_layout(
+        template="plotly_white",
+        width=1200,
+        height=300,
+        font=dict(  
+            size=16
+            ),  
+        showlegend=False,
+        bargap=0.1
+    )
+
+    fig.update_traces(
+        hovertemplate=(
+            "<b>Start:</b> %{customdata[0]}<br>"  # Use customdata for Start
+            "<b>End:</b> %{customdata[1]}<br>"    # Use customdata for End
+        ),
+        customdata=data[["Start","End"]].values,
+        textposition="inside",  # Places text inside the bars
+        texttemplate="%{text} years",
+        marker_color="#2a76d9")
+    
+    st.plotly_chart(fig,use_container_width=True)
 
 data = {
     "Country": ["England 🏴󠁧󠁢󠁥󠁮󠁧󠁿", "Germany 🇩🇪", "Brazil 🇧🇷", "France 🇫🇷", "Spain 🇪🇸"],
@@ -91,48 +147,10 @@ data = {
     "End": ["1971", "1970", "1981", "1975", "1980"]
 }
 
-bans = pd.DataFrame(data)
-bans["Duration"] = bans["End"].astype(int) - bans["Start"].astype(int)
-bans = bans.sort_values(by="Duration", ascending=True)
+bans_df = pd.DataFrame(data)
 
-#Graph 1: Bans Timeline
+plot_bans_timeline(bans_df)
 
-fig = px.timeline(
-    bans,
-    x_start="Start",
-    x_end="End",
-    y="Country",
-    text="Duration",
-    template="plotly_white",
-    hover_data={
-        "Country":False,
-        "Duration":False,
-        "Start": True, 
-        "End": True}, 
-)
-
-fig.update_layout(
-    template="plotly_white",
-    width=1200,
-    height=300,
-    font=dict(  
-        size=16
-        ),  
-    showlegend=False,
-    bargap=0.1
-)
-
-fig.update_traces(
-    hovertemplate=(
-        "<b>Start:</b> %{customdata[0]}<br>"  # Use customdata for Start
-        "<b>End:</b> %{customdata[1]}<br>"    # Use customdata for End
-    ),
-    customdata=bans[["Start","End"]].values,
-    textposition="inside",  # Places text inside the bars
-    texttemplate="%{text} years",
-    marker_color="#2a76d9")
-
-st.plotly_chart(fig,use_container_width=True)
 
 st.markdown(
     """
