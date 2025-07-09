@@ -104,8 +104,10 @@ def world_cup_timeline(data):
 
     st.plotly_chart(fig_1,use_container_width=True)
 
+
 timeline = pd.read_csv("data/timeline.csv",index_col=0)
 world_cup_timeline(timeline)
+
 
 st.markdown(
     """
@@ -129,20 +131,18 @@ with col1:
         """,
         unsafe_allow_html=True,
     )
-    
-    left, middle, right = st.columns(3)
+    st.markdown(
+        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>80 </span><span style='font-size:16px;'>Minutes played each game</span>", 
+        unsafe_allow_html=True
+    )
 
-    
-    left.markdown(
-        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>80</span><br><span style='font-size:16px;'>Minutes played each game</span>", 
+    st.markdown(
+        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>1 </span><span style='font-size:16px;'>Sponsor for the entire tournament: M&Ms</span>", 
         unsafe_allow_html=True
     )
-    middle.markdown(
-        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>1</span><br><span style='font-size:16px;'>Sponsor for the entire tournament: M&Ms</span>", 
-        unsafe_allow_html=True
-    )
-    right.markdown(
-        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>Zero</span><br><span style='font-size:16px;'>Number of TV channels in the US screening the final, where US beat Norway 2-1</span>", 
+
+    st.markdown(
+        "<span style='font-size:30px; font-weight:bold; color:#2a76d9;'>Zero </span><span style='font-size:16px;'> TV channels in the US screening the final, where US beat Norway 2-1</span>", 
         unsafe_allow_html=True
     )
 with col2:
@@ -157,11 +157,8 @@ st.markdown(
         “[The organisers were] afraid our ovaries were going to fall out if we played 90."<br> - USA captain April Heinrichs, 1991
     </div>
     <div class="text">
-    Since its meagre beginnings, the size of the women’s competition has grown steadily, with the latest edition held in 2023 in 
-    Australia and New Zealand expanding for the first time to 32 teams. 
-    Expansion means more teams, more players on the world stage, and more role models for young girls and women across the globe. <br><br>
-    As the pinnacle of international competition, the World Cup also brings eyes on the game and increased media scrutiny, which is often the catalyst for further investment in national and regional youth training programs.  
-    At the next World Cup in 2027, held in Brazil, the number of teams will increase from 32 to 48, following a similar change in the Men's format.<br><br>
+    Since its meagre beginnings, the size of the women’s competition has grown, with the latest edition held in 2023 in 
+    Australia and New Zealand expanding for the first time to 32 teams. <br><br>
      </div>""", unsafe_allow_html=True
 )
 
@@ -236,10 +233,10 @@ st.markdown(
     """
     <div class="text">
 
-    The make up of the participating teams is just as signficant as the number of teams.
-    
-    African representation has doubled over the last 4 editions, while 3 CONCACAF nations -  Haiti, Panama and Costa Rica - made their debuts in the 2023 tournament alone.
-    And these emerging football nations are not just making up the numbers. As we will see in the next section, the most recent World Cup demonstrated that the outsiders are increasingly competitive. 
+    The competition size has doubled since 2011, meaning more emerging football nations are now entering the fray and reaping the benefits of participation in the pinnacle of international competition -
+    the World Cup brings eyes on the game and increased media scrutiny, which is often the catalyst for further investment all across the spectrum, from national training programs down to grassroots football.
+    More players competing mean more visibility and a proliferation of different stories, and more role models for girls and women across the globe.
+     
      </div>""", unsafe_allow_html=True
 )
 
@@ -247,69 +244,249 @@ st.markdown(
 st.markdown(
     """
     <div class = "graph-title">
-    Central American and African nations benefit most from expansion
+    Take a Bow
     </div>
     <div class ="graph-subtitle"> 
-    Geographical representation of teams over time by region
+    Debutant Teams at the WWC by Region
     </div>
     """,
     unsafe_allow_html=True
 )
 
 
-def area_chart(data): 
+# def area_chart(data): 
 
-    region_colors = {
-    "UEFA (Europe)": "#003366",  # Dark Blue
-    "CONCACAF (North and Central America)": "#FFA500",  # Orange
-    "AFC (Asia)": "#FFD700",  # Yellow
-    "CAF (Africa)": "#ADD8E6",  # Light Blue
-    "CONMEBOL (South America)": "#008000",  # Green
-    "OFC (Oceania)": "#800080" #Purple
-    }
+#     region_colors = {
+#     "UEFA (Europe)": "#003366",  # Dark Blue
+#     "CONCACAF (North and Central America)": "#FFA500",  # Orange
+#     "AFC (Asia)": "#FFD700",  # Yellow
+#     "CAF (Africa)": "#ADD8E6",  # Light Blue
+#     "CONMEBOL (South America)": "#008000",  # Green
+#     "OFC (Oceania)": "#800080" #Purple
+#     }
 
-    teams_region = data.groupby(['Year', 'Region']).agg(
-    Teams_count=('Team', 'size'),
-    Team_List=('Team', lambda x: ', '.join(x))
-).reset_index()
+#     teams_region = data.groupby(['Year', 'Region']).agg(
+#     Teams_count=('Team', 'size'),
+#     Team_List=('Team', lambda x: ', '.join(x))
+# ).reset_index()
 
-    fig_3 = px.area(
-    teams_region, 
-    x='Year', 
-    y='Teams_count', 
-    color='Region',
-    hover_data={
-        'Year': False,          
-        'Region': True,         
-        'Teams_count': True,    
-        'Team_List': True       
-    },
-    labels={"Teams_count": "Number of Teams","Team_List":"Teams"},
-    color_discrete_map=region_colors
+#     fig_3 = px.area(
+#     teams_region, 
+#     x='Year', 
+#     y='Teams_count', 
+#     color='Region',
+#     hover_data={
+#         'Year': False,          
+#         'Region': True,         
+#         'Teams_count': True,    
+#         'Team_List': True       
+#     },
+#     labels={"Teams_count": "Number of Teams","Team_List":"Teams"},
+#     color_discrete_map=region_colors
+# )
+
+#     fig_3.update_xaxes(title='', tickmode='array', tickvals=[1991, 1995, 1999, 2003, 2007, 2011, 2015, 2019, 2023])
+
+#     fig_3.update_layout(
+#     font=dict(
+#         family="Helvetica",  
+#         size=14,  
+#         color="black"  
+#     ),
+#     yaxis=dict(showgrid=True),
+#     template='plotly_white',
+#     showlegend=True,
+#     legend=dict(
+#         orientation="h",  # Horizontal legend
+#         yanchor="bottom",  # Anchor legend vertically at the bottom
+#         y=1.02,            # Position legend slightly above the graph
+#         xanchor="left",  # Center legend horizontally
+#         #x=0.5              # Position legend in the center
+#     ),
+#     width=1200,
+#     height=500,
+#     margin=dict(l=50, r=50, t=50, b=50),
+# )
+
+#     st.plotly_chart(fig_3,use_container_width=True)
+
+# area_chart(teams)
+# def area_chart_cumulative_pct_change(data):
+#     region_colors = {
+#         "UEFA (Europe)": "#003366",
+#         "CONCACAF (North and Central America)": "#FFA500",
+#         "AFC (Asia)": "#FFD700",
+#         "CAF (Africa)": "#ADD8E6",
+#         "CONMEBOL (South America)": "#008000",
+#         "OFC (Oceania)": "#800080"
+#     }
+
+#     # 1. Compute raw counts per Year & Region
+#     teams_region = (
+#         data
+#         .groupby(['Region', 'Year'])
+#         .agg(Teams_count=('Team', 'size'))
+#         .reset_index()
+#         .sort_values(['Region', 'Year'])
+#     )
+    
+#     # 2. Find the baseline count for each region (its first tournament)
+#     baseline = (
+#         teams_region
+#         .groupby('Region')
+#         .first()
+#         .rename(columns={'Teams_count': 'Baseline_count'})
+#         .reset_index()[['Region', 'Baseline_count']]
+#     )
+    
+#     # 3. Merge baseline back and compute cumulative % change
+#     teams_region = teams_region.merge(baseline, on='Region')
+#     teams_region['Cumulative_pct_change'] = (
+#         (teams_region['Teams_count'] / teams_region['Baseline_count'] - 1) * 100
+#     )
+    
+#     # 4. Build area chart of cumulative % change
+#     fig = px.area(
+#         teams_region,
+#         x='Year',
+#         y='Cumulative_pct_change',
+#         color='Region',
+#         color_discrete_map=region_colors,
+#         hover_data={
+#             'Region': True,
+#             'Teams_count': True,
+#             'Cumulative_pct_change': ':.1f',
+#             'Year': False
+#         },
+#         labels={
+#             'Cumulative_pct_change': 'Cumulative % Change',
+#             'Teams_count': 'Number of Teams'
+#         },
+#         title="Cumulative % Change in Number of Teams by Region",
+#         template='plotly_white'
+#     )
+    
+#     # 5. Tidy axes & layout
+#     tournament_years = [1991, 1995, 1999, 2003, 2007, 2011, 2015, 2019, 2023]
+#     fig.update_xaxes(
+#         title='Tournament Year',
+#         tickmode='array',
+#         tickvals=tournament_years
+#     )
+#     fig.update_yaxes(
+#         title='Cumulative % Change',
+#         ticksuffix='%',
+#         rangemode='tozero'
+#     )
+#     fig.update_layout(
+#         font=dict(family="Helvetica", size=14),
+#         legend=dict(orientation="h", y=1.02, xanchor="left"),
+#         width=1200, height=500,
+#         margin=dict(l=50, r=50, t=80, b=50),
+#     )
+    
+#     return fig
+
+# # Usage in Streamlit:
+# fig = area_chart_cumulative_pct_change(teams)
+# st.plotly_chart(fig, use_container_width=True)
+
+def debutants_stacked_bar(data):
+    # Ensure sorted by Year
+    data = data.sort_values(by=['Year'])
+
+    # Find each team’s first appearance
+    debut_year = (
+        data.groupby('Team')['Year']
+            .min()
+            .reset_index()
+            .rename(columns={'Year': 'Debut_Year'})
+    )
+
+    # Merge debut info back
+    data = data.merge(debut_year, on='Team')
+
+    # Keep only debut appearances
+    debutants = data[data['Year'] == data['Debut_Year']]
+
+    # Count and list debutants per Year & Region
+    debutants_count = (
+        debutants
+        .groupby(['Year', 'Region'])
+        .agg(
+            Debutant_Teams=('Team', 'nunique'),
+            Team_List=('Team', lambda teams: ', '.join(sorted(teams.unique())))
+        )
+        .reset_index()
+    )
+
+
+      # Define your tournament years
+    years = [1991, 1995, 1999, 2003, 2007, 2011, 2015, 2019, 2023]
+    # Convert to strings for categorical axis
+    debutants_count['Year_str'] = debutants_count['Year'].astype(str)
+
+    fig = px.bar(
+        debutants_count,
+        x='Year_str',                   # use the string version
+        y='Debutant_Teams',
+        color='Region',
+        text='Debutant_Teams',
+        hover_data={
+            'Debutant_Teams': True,
+            'Team_List': True,
+            'Year_str': False
+        },
+        labels={
+            'Debutant_Teams': 'Number of Debutant Teams',
+            'Team_List': 'Debutant Teams',
+            'Year_str': 'Tournament Year'
+        },
+        template='plotly_white',
+        color_discrete_map={
+            "UEFA (Europe)": "#003366",
+            "CONCACAF (North and Central America)": "#FFA500",
+            "AFC (Asia)": "#FFD700",
+            "CAF (Africa)": "#ADD8E6",
+            "CONMEBOL (South America)": "#008000",
+            "OFC (Oceania)": "#800080"
+        },
+        category_orders={
+            'Year_str': [str(y) for y in years]   # enforce ordering
+        }
+    )
+
+    fig.update_traces(textposition='inside', texttemplate='%{text}')
+
+    fig.update_layout(
+        barmode='stack',
+        xaxis=dict(
+            title='Year',
+            type='category',    # force categorical axis
+            tickmode='array',
+            tickvals=[str(y) for y in years],
+            ticktext=[str(y) for y in years],
+        ),
+        yaxis=dict(title='Number of Debutant Teams', dtick=1, rangemode='tozero'),
+        legend=dict(title='Region', orientation='h', y=1.2),
+        width=900,
+        height=500,
+        font=dict(size=14, family="Helvetica"),
+        margin=dict(t=60, b=50),
+    )
+
+    return fig
+
+# Usage in Streamlit:
+fig = debutants_stacked_bar(teams)
+st.plotly_chart(fig, use_container_width=True)
+
+st.markdown(
+    """
+    <div class="text">
+
+    22 debutant teams have featured in the last 4 editions of the tournament, compared to 10 teams across the 4 editions before that. And at the next World Cup in 2027, held in Brazil, the number of teams will further increase, from 32 to 48, following a similar change in the Men's format.
+    But are these emerging nations adding quality to the competition, or creating an increasing number of skewed mismatches?
+     
+     </div>""", unsafe_allow_html=True
 )
-
-    fig_3.update_xaxes(title='', tickmode='array', tickvals=[1991, 1995, 1999, 2003, 2007, 2011, 2015, 2019, 2023])
-
-    fig_3.update_layout(
-    font=dict(
-        family="Helvetica",  
-        size=14,  
-        color="black"  
-    ),
-    yaxis=dict(showgrid=True),
-    template='plotly_white',
-    showlegend=True,
-    legend=dict(
-        orientation="h",  # Horizontal legend
-        yanchor="bottom",  # Anchor legend vertically at the bottom
-        y=1.02,            # Position legend slightly above the graph
-        xanchor="left",  # Center legend horizontally
-        #x=0.5              # Position legend in the center
-    ),
-    width=1200,
-    height=500,
-    margin=dict(l=50, r=50, t=50, b=50),
-)
-
-    st.plotly_chart(fig_3,use_container_width=True)
-area_chart(teams)

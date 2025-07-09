@@ -120,10 +120,13 @@ def plot_bans_timeline(data):
         width=1200,
         height=300,
         font=dict(  
-            size=16
+            size=18
             ),  
         showlegend=False,
-        bargap=0.1
+        bargap=0.1,
+        yaxis_title ="",
+        xaxis=dict(tickfont=dict(size=18)),
+        yaxis=dict(tickfont=dict(size=18))
     )
 
     fig.update_traces(

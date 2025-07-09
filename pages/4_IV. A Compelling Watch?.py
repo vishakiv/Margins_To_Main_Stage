@@ -23,7 +23,14 @@ region_representation = knockout.groupby(['Year', 'Region']).agg(
     Teams_count=('Team', 'size'),
     Team_List=('Team', lambda x: ', '.join(x))).reset_index()
 
-
+region_colors = {
+    "UEFA (Europe)": "#003366",  # Dark Blue
+    "CONCACAF (North and Central America)": "#FFA500",  # Orange
+    "AFC (Asia)": "#FFD700",  # Yellow
+    "CAF (Africa)": "#ADD8E6",  # Light Blue
+    "CONMEBOL (South America)": "#008000",  # Green
+    "OFC (Oceania)": "#800080" 
+}
 
 #Graph 6 - Bar chart: Teams progressing to knockout stages
 
