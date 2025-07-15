@@ -4,7 +4,7 @@
 World Cup data through a dataset from Kaggle, and supplemented my analysis via match data from FBref and extensive personal research and data collection efforts. The accompanying visualisations were produced using Plotly and are fully interactive.
 
 The full project is available to view via [this link](https://marginstomainstage.streamlit.app/).
-
+ 
 ## Project Overview
 
 
