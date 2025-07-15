@@ -29,11 +29,6 @@ In the early 1900s, women’s football was booming - but fast forward just 50 ye
 
 These bans decimated the women’s game and created an deeply unequal playing field, the effects of which we still see when it comes to international competition and tournaments.
 
-Juan is a noob.
-
-
-
-
 ## Data Sources
 
 - **Kaggle** and **FBref** - Women's World Cup team and match data 
