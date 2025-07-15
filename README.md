@@ -14,16 +14,23 @@ The project
 - examines **factors behind success**, **key performance metrics** and **attendance growth** in the WWC, and exposes  **systemic inequalities** which still persist in the women’s game.
 - gives the user an **user-friendly interface** for exploring and visualising Women’s World Cup data to uncover surprising facts about the competition.
 
+--- 
+
+Below you will find a very abbreviated preview of just 3 of the questions I was able to answer in this project:
 
 
-## Key Questions explored
+## 1. What historical challenges has women’s football faced?
 
-- What historical challenges has women’s football faced?
-- How global is the Women’s World Cup? How have participation rates evolved, and who has benefited most from expansion?
-- Which nations have had the most success, and what insights can we gain from their success?
-- How can we measure competitiveness in Women’s World Cup matches?
-- Has the level of public interest in the competition grown?
-- What inequalities persist in women’s football at the World Cup level?
+Women have been playing football since 1800: just as long as men. However, the disparity in the women’s and men’s professional game, in terms of visibility, investment and global attention, is stark.
+
+In the early 1900s, women’s football was booming - but fast forward just 50 years later, and women were banned for decades from playing in organised league football in many countries across the world.
+
+![Women’s football Bans](assets/images/football_bans.png)
+
+These bans decimated the women’s game and created an deeply unequal playing field, the effects of which we still see when it comes to international competition and tournaments.termin
+
+
+
 
 ## Data Sources
 
