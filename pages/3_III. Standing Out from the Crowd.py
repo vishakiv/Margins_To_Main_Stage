@@ -213,15 +213,142 @@ st.markdown(
      </div>""", unsafe_allow_html=True
 )
 
+import streamlit as st
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
 
+# Sample data
 team_names = sorted(teams["Team"].unique())
-df_rankings = teams[["Team","Rank","Year"]]
+df_rankings = teams[["Team", "Rank", "Year"]].copy()
 
+rank_order = [
+    '1', '2', '3', '4',
+    'Semi Final',
+    'Quarter Final',
+    'Round of 16',
+    'Group Stage',
+    'Did Not Qualify'
+]
+
+# Prepare data
+df_rankings['Rank'] = pd.Categorical(df_rankings['Rank'], categories=rank_order, ordered=True)
+df_rankings['Year'] = df_rankings['Year'].astype(int)
+world_cup_years = list(range(1991, 2024, 4))
+
+# Team selection
 selected_team = st.selectbox("Choose a team", team_names)
 
-team_data = df_rankings[df_rankings["Team"] == selected_team].sort_values("Year")
+# Filter and reindex to include all WC years
+team_df = df_rankings[df_rankings["Team"] == selected_team]
+team_df = team_df.set_index("Year").reindex(world_cup_years).reset_index()
+team_df["Team"] = selected_team
+team_df["Rank"] = team_df["Rank"].fillna("Did Not Qualify")
 
-st.dataframe(team_data)
+# Plot with Seaborn
+plt.figure(figsize=(10, 5))
+sns.stripplot(data=team_df, x='Year', y='Rank', size=10,color="#E34234")
+plt.xticks(world_cup_years)
+plt.title(f"{selected_team}'s Previous Tournaments")
+plt.xlabel("")
+plt.ylabel("")
+ax = plt.gca()
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+
+
+# Display in Streamlit
+st.pyplot(plt)
+
+
+
+# # Input data
+# team_names = sorted(teams["Team"].unique())
+# df_rankings = teams[["Team", "Rank", "Year"]].copy()
+# df_rankings["Year"] = df_rankings["Year"].astype(int)
+
+# # Streamlit selectbox
+# selected_team = st.selectbox("Choose a team", team_names)
+
+# # Define rank order
+# rank_order = [
+#     '1', '2', '3', '4',
+#     'Semi Final',
+#     'Quarter Final',
+#     'Round of 16',
+#     'Group Stage',
+#     'Did Not Qualify'
+# ]
+
+# world_cup_years = list(range(1991, 2024, 4))
+
+# # Filter selected team and reindex with all World Cup years
+# team_data = df_rankings[df_rankings["Team"] == selected_team].set_index("Year").reindex(world_cup_years).reset_index()
+
+# # Fill in missing team name and missing rank values
+# team_data["Team"] = selected_team
+# team_data["Rank"] = pd.Categorical(team_data["Rank"], categories=rank_order, ordered=True)
+# team_data["Rank"] = team_data["Rank"].fillna("Did Not Qualify")
+# team_data["dummy"] = False
+
+# # Dummy rows to force y-axis to show all rank levels
+# dummy = pd.DataFrame({
+#     "Year": [world_cup_years[0]] * len(rank_order),
+#     "Rank": pd.Categorical(rank_order, categories=rank_order, ordered=True),
+#     "Team": [selected_team] * len(rank_order),
+#     "dummy": [True] * len(rank_order)
+# })
+
+# # Combine real data and dummy data
+# plot_df = pd.concat([team_data, dummy], ignore_index=True)
+
+# # Split out real data for coloring
+# real_data = plot_df[plot_df["dummy"] == False]
+# colors = ['grey' if r == 'Did Not Qualify' else 'blue' for r in real_data['Rank']]
+
+# # Plot real data
+# fig = px.scatter(
+#     real_data,
+#     x='Year',
+#     y='Rank',
+#     text='Rank'
+# )
+
+# # Add invisible dummy points
+# invisible = px.scatter(
+#     plot_df[plot_df["dummy"] == True],
+#     x='Year',
+#     y='Rank',
+#     opacity=0
+# ).data[0]
+
+# fig.add_trace(invisible)
+
+# # Update trace styles
+# fig.update_traces(marker=dict(size=12, color=colors), textposition='top center')
+
+# # Layout settings
+# fig.update_layout(
+#     xaxis=dict(
+#         tickmode='array',
+#         tickvals=world_cup_years,
+#         range=[min(world_cup_years) - 1, max(world_cup_years) + 1],
+#         title='World Cup Year'
+#     ),
+#     yaxis=dict(
+#         categoryorder='array',
+#         categoryarray=rank_order[::-1],  # Highest at top
+#         tickmode='array',
+#         tickvals=rank_order[::-1],
+#         title='Rank'
+#     ),
+#     title=f"{selected_team}'s World Cup Placings Over Time",
+#     showlegend=False
+# )
+
+# Show plot
+#st.plotly_chart(fig, use_container_width=True)
+
 
 st.markdown(
     """
