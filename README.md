@@ -24,7 +24,7 @@ Women have been playing football since 1800: just as long as men. However, the d
 
 In the early 1900s, women’s football was booming - but fast forward just 50 years later, and women were banned for decades from playing in organised league football in many countries across the world.
 
-<img src="assets/images/football_bans.png" alt="Women’s football Bans" width="400px">
+<img src="assets/images/football_bans.png" alt="Women’s football Bans" width="600px">
 
 These bans decimated the women’s game and created an deeply unequal playing field, the effects of which we still see when it comes to international competition and tournaments.
 

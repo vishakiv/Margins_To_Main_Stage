@@ -3,7 +3,153 @@ import pandas as pd
 import plotly.express as px
 import plotly.io as pio
 
+st.markdown(
+    """
+    <div style="text-align: left; font-size: 22px;">
+    How can we evaluate the World Cup as a product? 
+    
+    A competitive World Cup requires a delicate balance between a level playing field and a sense of unpredictability, combined with strong audience engagement.
+    Yes, viewers want to see goals — but not one-sided games. 
+    
+    <br>
+    
+    We can start off by examining how prominent one-sided games are in the Women’s World Cup compared to the Men’s World Cup.
 
+    I have defined a thrashing as a match in which the goal difference (difference in goals scored between two teams) exceeds 3. 
+    The percentage per tournament statistics for the WWC are revealing:
+    
+     </div>""", unsafe_allow_html=True
+)
+
+st.markdown(
+    """
+    <div style="text-align: left; font-size: 22px;">
+    In the Men´s World Cup, as a means of comparison, no tournament since 1958 has had a thrashing rate of over 10%. 
+    It is clear that there is still an uneven playing field in women’s football, resulting in a high number of skewed scorelines.
+   
+    
+    Average goal difference per tournament is another metric that can indicate how close match-ups are - the lower the average,
+    the tighter the contest.
+     </div>""", unsafe_allow_html=True
+)
+
+
+#Calculating average goal difference per World Cup
+matches = pd.read_csv("data/matches.csv",index_col=0)
+matches["goal_difference"] = round(abs(matches['home_score'] - matches['away_score']),1)
+goal_diff = matches.groupby("Year")["goal_difference"].mean().round(1).reset_index()
+
+#Graph 7 - Average Goal Difference over time
+fig_6 = px.line(goal_diff,
+              x='Year',
+              y='goal_difference',
+              title='Average Goal Difference Over Time',
+              labels={"goal_difference":"Goal Difference"},
+              hover_data = {"goal_difference": True,'Year': False},
+              hover_name="Year"
+             )
+fig_6.update_traces(mode='lines+markers', marker=dict(size=8, color='#2a76d9'))
+fig_6.update_layout(
+    title={
+        "text": "Closing the gap<br><span style='font-size:14px; font-weight:normal; color:gray;'>Average Goal Difference per tournament</span>",
+        "font": {
+            'family': "Helvetica-Bold",  
+            'size': 18,                   
+            'color': "black",             
+        },
+         "x": 0, 
+        "xanchor": "left" 
+    },
+    font=dict(
+        family="Helvetica",  
+        size=14,  
+        color="black" 
+    ),
+    template='plotly_white',
+    showlegend=True,
+    width=600,
+    height=400,
+    xaxis_title="",
+    yaxis_title="Goal Difference",
+    yaxis=dict(showgrid=True),
+    xaxis=dict(showgrid=False)
+)
+fig_6.update_xaxes(title='',tickmode='array', tickvals=[1991, 1995, 1999, 2003, 2007, 2011, 2015, 2019, 2023])
+
+st.plotly_chart(fig_6, use_container_width=True, key="knockout_stage")
+# col1, col2 = st.columns(2)
+
+
+# matches['is_draw'] = matches['home_score'] == matches['away_score']
+# draw_stats = matches.groupby('Year').agg(
+#     total_games=('is_draw', 'size'),
+#     total_draws=('is_draw', 'sum')
+# ).reset_index()
+
+# # Calculate percentage of draws
+# draw_stats['percent_draws'] = round((draw_stats['total_draws'] / draw_stats['total_games']) * 100,2)
+# draw_stats['percent_non_draws'] = 100 - draw_stats['percent_draws']
+
+# # Reshape data for stacked bar plot
+# draw_stats_melted = draw_stats.melt(
+#     id_vars='Year', 
+#     value_vars=['percent_draws', 'percent_non_draws'],
+#     var_name='Result', 
+#     value_name='Percentage'
+# )
+
+# # Rename result categories for clarity
+# draw_stats_melted['Result'] = draw_stats_melted['Result'].map({
+#     'percent_draws': 'Draw',
+#     'percent_non_draws': 'Non-Draw'
+# })
+
+# # Graph 8 - Stacked Bar chart: Number of draws
+# fig_7 = px.bar(
+#     draw_stats_melted, 
+#     x='Year', 
+#     y='Percentage', 
+#     color='Result', 
+#     title='Draw Percentage Across Each World Cup',
+#     labels={'Percentage': '%'},
+#     color_discrete_map={'Draw': '#1d4e9e', 'Non-Draw': '#2a76d9'},
+#     barmode='stack'
+# )
+
+# fig_7.update_layout(
+#     title={
+#         "text": "Stalemate Statistics<br><span style='font-size:14px; font-weight:normal; color:gray;'>Proportion of games resulting in a draw</span>",
+#         "font": {
+#             'family': "Helvetica-Bold",  # Font family
+#             'size': 18,                   # Font size
+#             'color': "black",             # Font color
+#         },
+#          "x": 0, 
+#         "xanchor": "left" 
+#     },
+#     font=dict(
+#         family="Helvetica",  # Font style
+#         size=12,  # General font size
+#         color="black"  # Font color
+#     ),
+#     yaxis=dict(showgrid=True),
+#     template='plotly_white',
+#     showlegend=True,
+#     width=600,
+#     height=400,
+#     xaxis_title="",
+#     yaxis_title="Percentage of Games (%)",
+# )
+
+# fig_7.update_xaxes(title='',tickmode='array', tickvals=[1991, 1995, 1999, 2003, 2007, 2011, 2015, 2019, 2023])
+
+# # Average Goal Difference
+# with col1:
+#     st.plotly_chart(fig_6, use_container_width=True, key="goal_difference")
+
+# # Draw percentage
+# with col2:
+#     st.plotly_chart(fig_7, use_container_width=True, key="draw_percentage")
 
 st.markdown(
     """
@@ -73,122 +219,8 @@ fig_4.update_layout(
     xaxis=dict(showgrid=False)
 )
 
-#Calculating average goal difference per World Cup
-matches = pd.read_csv("data/matches.csv",index_col=0)
-matches["goal_difference"] = round(abs(matches['home_score'] - matches['away_score']),1)
-goal_diff = matches.groupby("Year")["goal_difference"].mean().round(1).reset_index()
-
-#Graph 7 - Average Goal Difference over time
-fig_6 = px.line(goal_diff,
-              x='Year',
-              y='goal_difference',
-              title='Average Goal Difference Over Time',
-              labels={"goal_difference":"Goal Difference"},
-              hover_data = {"goal_difference": True,'Year': False},
-              hover_name="Year"
-             )
-fig_6.update_traces(mode='lines+markers', marker=dict(size=8, color='#2a76d9'))
-fig_6.update_layout(
-    title={
-        "text": "Closing the gap<br><span style='font-size:14px; font-weight:normal; color:gray;'>Average Goal Difference per tournament</span>",
-        "font": {
-            'family': "Helvetica-Bold",  
-            'size': 18,                   
-            'color': "black",             
-        },
-         "x": 0, 
-        "xanchor": "left" 
-    },
-    font=dict(
-        family="Helvetica",  
-        size=14,  
-        color="black" 
-    ),
-    template='plotly_white',
-    showlegend=True,
-    width=600,
-    height=400,
-    xaxis_title="",
-    yaxis_title="Goal Difference",
-    yaxis=dict(showgrid=True),
-    xaxis=dict(showgrid=False)
-)
-fig_6.update_xaxes(title='',tickmode='array', tickvals=[1991, 1995, 1999, 2003, 2007, 2011, 2015, 2019, 2023])
-
-st.plotly_chart(fig_4, use_container_width=True, key="knockout_stage")
-col1, col2 = st.columns(2)
 
 
-matches['is_draw'] = matches['home_score'] == matches['away_score']
-draw_stats = matches.groupby('Year').agg(
-    total_games=('is_draw', 'size'),
-    total_draws=('is_draw', 'sum')
-).reset_index()
-
-# Calculate percentage of draws
-draw_stats['percent_draws'] = round((draw_stats['total_draws'] / draw_stats['total_games']) * 100,2)
-draw_stats['percent_non_draws'] = 100 - draw_stats['percent_draws']
-
-# Reshape data for stacked bar plot
-draw_stats_melted = draw_stats.melt(
-    id_vars='Year', 
-    value_vars=['percent_draws', 'percent_non_draws'],
-    var_name='Result', 
-    value_name='Percentage'
-)
-
-# Rename result categories for clarity
-draw_stats_melted['Result'] = draw_stats_melted['Result'].map({
-    'percent_draws': 'Draw',
-    'percent_non_draws': 'Non-Draw'
-})
-
-# Graph 8 - Stacked Bar chart: Number of draws
-fig_7 = px.bar(
-    draw_stats_melted, 
-    x='Year', 
-    y='Percentage', 
-    color='Result', 
-    title='Draw Percentage Across Each World Cup',
-    labels={'Percentage': '%'},
-    color_discrete_map={'Draw': '#1d4e9e', 'Non-Draw': '#2a76d9'},
-    barmode='stack'
-)
-
-fig_7.update_layout(
-    title={
-        "text": "Stalemate Statistics<br><span style='font-size:14px; font-weight:normal; color:gray;'>Proportion of games resulting in a draw</span>",
-        "font": {
-            'family': "Helvetica-Bold",  # Font family
-            'size': 18,                   # Font size
-            'color': "black",             # Font color
-        },
-         "x": 0, 
-        "xanchor": "left" 
-    },
-    font=dict(
-        family="Helvetica",  # Font style
-        size=12,  # General font size
-        color="black"  # Font color
-    ),
-    yaxis=dict(showgrid=True),
-    template='plotly_white',
-    showlegend=True,
-    width=600,
-    height=400,
-    xaxis_title="",
-    yaxis_title="Percentage of Games (%)",
-)
-
-fig_7.update_xaxes(title='',tickmode='array', tickvals=[1991, 1995, 1999, 2003, 2007, 2011, 2015, 2019, 2023])
-
-# Average Goal Difference
-with col1:
-    st.plotly_chart(fig_6, use_container_width=True, key="goal_difference")
-
-# Draw percentage
-with col2:
-    st.plotly_chart(fig_7, use_container_width=True, key="draw_percentage")
 
 
 st.title("4 - All Eyes on the Women's Game")
