@@ -7,6 +7,7 @@ The full project is available to view via [this link](https://marginstomainstage
  
 ## Project Overview
 
+vishski id ugly as 
 
 The project 
 - provides **background and contextual information** about women’s football in the 20th century.
@@ -29,7 +30,7 @@ In the early 1900s, women’s football was booming - but fast forward just 50 ye
 
 These bans decimated the women’s game and created an deeply unequal playing field, the effects of which we still see when it comes to international competition and tournaments.
 
-Juan is a noob.
+Juan was a noob.
 
 
 
