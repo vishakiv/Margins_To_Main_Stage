@@ -7,8 +7,6 @@ The full project is available to view via [this link](https://marginstomainstage
  
 ## Project Overview
 
-vishski id ugly as 
-
 The project 
 - provides **background and contextual information** about women’s football in the 20th century.
 - highlights changes in  **global and regional participation** across time 
@@ -30,14 +28,6 @@ In the early 1900s, women’s football was booming - but fast forward just 50 ye
 
 These bans decimated the women’s game and created an deeply unequal playing field, the effects of which we still see when it comes to international competition and tournaments.
 
-<<<<<<< HEAD
-Juan was a noob.
-
-
-
-
-=======
->>>>>>> d74d48dddfbf7916b197482106a2d1cae4c58265
 ## Data Sources
 
 - **Kaggle** and **FBref** - Women's World Cup team and match data 
