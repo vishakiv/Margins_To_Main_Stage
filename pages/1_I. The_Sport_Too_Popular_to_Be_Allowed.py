@@ -50,7 +50,7 @@ st.markdown(
     
     In the early 20th century, crowds in their thousands came to watch women's games in England.
     The Dick, Kerr Ladies, founded in 1917, was one of the first recognised women's international teams.
-    On Boxing Day, 1920, the team met St Helens Ladies at Everton's Goodison Park, drawing a record crowd for domestic women's football of 53,000 - a record that stood for 99 years.
+    On Boxing Day, 1920, the team met St Helens Ladies at Everton's Goodison Park, drawing a record crowd for domestic women's football of 53,000 — a record that stood for 99 years.
 
 
     This was a problem for the men in suits at The English Football Association. Women's football was too popular, and in terms of profit and attendance, was becoming a rival to the men's game.
@@ -64,7 +64,7 @@ st.markdown(
 st.markdown(
     """
     <div class="pull-quote">
-        "There is a general feeling that football is no game for women. It is too strenous, that being the view of many famous specialists.”<br><br>- Sheffield Daily Telegraph, 9 December 1921
+        "There is a general feeling that football is no game for women. It is too strenous, that being the view of many famous specialists.”<br><br>— Sheffield Daily Telegraph, 9 December 1921
     </div>
     """, unsafe_allow_html=True,
 )
@@ -76,8 +76,8 @@ st.markdown(
 
     On December 5, 1921, just under a year after the spectacularly successful match at Goodison Park, the FA banned women from using its grounds, effectively decimating the game. Other countries soon followed suit. 
 
-    This chart does not represent the full list of countries in which women's football was banned, but rather a small selection -
-    I have chosen these nations deliberately due to their status as traditional powerhouses in men's international football.
+    This chart does not represent the full list of countries in which women's football was banned, but only a small selection —
+    these nations have been chosen deliberately due to their status as traditional powerhouses in men's international football.
     Yet that success and visibility did not extend to their women’s teams, revealing a clear disparity in support, recognition, and opportunity.
      </div>""", unsafe_allow_html=True
 )
@@ -154,7 +154,7 @@ plot_bans_timeline(bans_df)
 st.markdown(
     """
     <div class="pull-quote">
-        "In the battle for the ball, feminine grace vanishes, body and soul inevitably suffer damage." - Deutscher Fussball Bund, 1955
+        "In the battle for the ball, feminine grace vanishes, body and soul inevitably suffer damage."<br><br> — Deutscher Fussball Bund, 1955
     </div>
     """,
     unsafe_allow_html=True,

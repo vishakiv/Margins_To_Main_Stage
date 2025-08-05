@@ -21,16 +21,30 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.title("5 - Equality Drive")
+st.title("V. Power, Pay and the Gender Gap")
 st.divider()
 
 st.markdown(
     """
     <div class="pull-quote">
-        "One day the men in suits will understand."<br> - Ada Hegeberg, inaugural Ballon D'or winner in 2019
+        "One day the men in suits will understand."<br><br> — Ada Hegeberg, inaugural Ballon D'or winner in 2019
     </div>
     """,
     unsafe_allow_html=True,
+)
+
+st.markdown(
+    """
+    <div style="text-align: left; font-size: 22px;">
+    Women's football, having been banned or made difficult to play in the past, has now catapulted itself into the mainstream.
+    Performance levels are developing rapidly in many countries, and the spectacle of the 2023 Women's World Cup and the 2025 Women's Euros has offered us
+    great sport and exciting entertainment. For all its addictive qualities, women's football is far from a perfect sport, 
+    still plagued by inequality and cynicism among many quarters.<br><br> 
+
+    The yawning gap in prize money allocation between the men's and women's World Cups tells its own story about inequality and investment, and although
+    FIFA President Gianni Infantino has announced a goal to achieve equal prize money by 2027, count this writer skeptical ...
+
+     </div>""", unsafe_allow_html=True
 )
 
 st.markdown(
@@ -47,9 +61,6 @@ st.markdown(
 )
 prize_money = pd.read_csv("data/prize_money.csv",index_col=0)
 prize_money = prize_money.drop(columns="Unnamed: 0")
-
-
-
 #Graph 9 - Bar Chart: Prize Money Difference
 fig_9 = px.bar(
     prize_money, 
@@ -85,10 +96,17 @@ fig_9.update_layout(
 
 st.plotly_chart(fig_9, use_container_width=True)
 
-container = st.container(border=True)
-container.markdown("<span style='font-size:22px; '>FIFA President Gianni Infantino has announced a goal to :blue[achieve equal prize money] for the men’s and women’s World Cups by :blue[2027].</span>", 
-    unsafe_allow_html=True)
 
+st.markdown(
+    """
+    <div style="text-align: left; font-size: 22px;">
+    Anyone who has even the slightest experience in girls' and women's football teams will not fail to notice the stark fact that most 
+    are coached by men. The social, cultural, and institutional barriers that prevented women from playing has also impacted the identification, development 
+    and hiring of talented female coaches. They are outnumbered by men, even at the very highest level — no World Cup has yet achieved even a 50-50 gender split across teams. 
+    <br><br> Lack of success has nothing to do with it. Since 2000, all but two of the major women's football tournaments — here the World Cup, Euros and the Olympics are included — have been 
+    won by female-coached teams.
+     </div>""", unsafe_allow_html=True
+)
 
 st.markdown(
     """
@@ -154,8 +172,11 @@ fig_10.update_layout(
 # Display the plot
 st.plotly_chart(fig_10, use_container_width=True)
 
+st.markdown(
+    """
+    <div style="text-align: left; font-size: 22px;">
+    This is not a women's football-specific issue, either. An analysis of all the coaches (regardless of sport) at the 2024 Paris Olympics revealed only 13% were women. 
+    Women's basketball had the highest rate of 50%, followed by football (33%).
 
-container = st.container(border=True)
-container.markdown("<span style='font-size:22px; '>Since 2000, :blue[all but two] of the major women's football tournaments - the Women's World Cup, Women's Euros and the Olympics - have been won by :blue[female-coached teams]</span>", 
-    unsafe_allow_html=True)
-
+     </div>""", unsafe_allow_html=True
+)

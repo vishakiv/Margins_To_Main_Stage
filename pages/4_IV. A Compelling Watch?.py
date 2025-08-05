@@ -3,6 +3,8 @@ import pandas as pd
 import plotly.express as px
 import plotly.io as pio
 
+st.title("IV. A Compelling Watch?")
+
 st.markdown(
     """
     <div style="text-align: left; font-size: 22px;">
@@ -12,7 +14,7 @@ st.markdown(
     I have defined a one-sided game (a thrashing) as a match in which the goal difference (difference in goals scored between two teams) exceeds 3. 
     The percentage per tournament statistics for the WWC are revealing:
 
-    In the inaugural tournament of 1991, a staggering 30% percent of games ended in blow-outs - and up until 2007, this number was still high as 22%.<br>
+    In the inaugural tournament of 1991, a staggering 30% of games ended in blow-outs — and up until 2007, this number was still high as 22%.<br>
     In the Men’s World Cup, in comparison, no tournament since 1958 has had an equivalent rate of over 10%.
 
     While there was a signficant dip from 2011, every expanded tournament (2015 and 2023) has seen an increase in the percentage of thrashings.
@@ -151,8 +153,8 @@ st.plotly_chart(fig_4, use_container_width=True)
 st.markdown(
     """
     <div style="text-align: left; font-size: 22px;">
-    What has become abundantly clear in recent years is that women's football viewership has become increasingly popular. Stadium attendance for the WWC has fluctuated
-    due to lack of marketing amongst host nations (many who went to France 2019 complained that you wouldn't have known a World Cup was taking place in the country), 
+    What has become abundantly clear in recent years is that women's football viewership on the rise. Stadium attendance for the WWC has fluctuated
+    due to lack of vision and marketing amongst host nations (many who went to France 2019 complained that you wouldn't have known a World Cup was taking place in the country), 
     but the most recent tournament in Australia & New Zealand, marked by a highly noticeable and enthusiastic publicity campaign, was a resounding success by all measures, both in terms of stadium and TV viewership.<br><br>
      </div>""", unsafe_allow_html=True
 )

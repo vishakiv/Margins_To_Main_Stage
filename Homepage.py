@@ -56,6 +56,7 @@ st.markdown("""
 st.markdown(
     """
 <div class="text">
+<br><br>
 Everyone watches women’s sports.<br><br>
 At least, that’s the phrase on the front of the now-iconic T-shirt that a friend gifted me. (This was a case of perfect match between recipient and gift.) 
 But the numbers increasingly back it up. Per data from Women’s Sport Trust, more people watched women’s sports in the first four months of 2024 than ever before.<br><br>

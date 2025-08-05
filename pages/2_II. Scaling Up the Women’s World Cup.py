@@ -154,7 +154,7 @@ with col2:
 st.markdown(
     """
     <div class="pull-quote">
-        “[The organisers were] afraid our ovaries were going to fall out if we played 90."<br> - USA captain April Heinrichs, 1991
+        “[The organisers were] afraid our ovaries were going to fall out if we played 90."<br><br>— USA captain April Heinrichs, 1991
     </div>
     <div class="text">
     Since its meagre beginnings, the size of the women’s competition has grown, with the latest edition held in 2023 in 
@@ -233,7 +233,7 @@ st.markdown(
     """
     <div class="text">
 
-    The competition size has doubled since 2011, meaning more emerging football nations are now entering the fray and reaping the benefits of participation in the pinnacle of international competition -
+    The competition size has doubled since 2011, meaning more emerging football nations are now entering the fray and reaping the benefits of participation in the pinnacle of international competition —
     the World Cup brings eyes on the game and increased media scrutiny, which is often the catalyst for further investment all across the spectrum, from national training programs down to grassroots football.
     More players competing mean more visibility and a proliferation of different stories, and more role models for girls and women across the globe.
      
@@ -252,63 +252,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-
-# def area_chart(data): 
-
-#     region_colors = {
-#     "UEFA (Europe)": "#003366",  # Dark Blue
-#     "CONCACAF (North and Central America)": "#FFA500",  # Orange
-#     "AFC (Asia)": "#FFD700",  # Yellow
-#     "CAF (Africa)": "#ADD8E6",  # Light Blue
-#     "CONMEBOL (South America)": "#008000",  # Green
-#     "OFC (Oceania)": "#800080" #Purple
-#     }
-
-#     teams_region = data.groupby(['Year', 'Region']).agg(
-#     Teams_count=('Team', 'size'),
-#     Team_List=('Team', lambda x: ', '.join(x))
-# ).reset_index()
-
-#     fig_3 = px.area(
-#     teams_region, 
-#     x='Year', 
-#     y='Teams_count', 
-#     color='Region',
-#     hover_data={
-#         'Year': False,          
-#         'Region': True,         
-#         'Teams_count': True,    
-#         'Team_List': True       
-#     },
-#     labels={"Teams_count": "Number of Teams","Team_List":"Teams"},
-#     color_discrete_map=region_colors
-# )
-
-#     fig_3.update_xaxes(title='', tickmode='array', tickvals=[1991, 1995, 1999, 2003, 2007, 2011, 2015, 2019, 2023])
-
-#     fig_3.update_layout(
-#     font=dict(
-#         family="Helvetica",  
-#         size=14,  
-#         color="black"  
-#     ),
-#     yaxis=dict(showgrid=True),
-#     template='plotly_white',
-#     showlegend=True,
-#     legend=dict(
-#         orientation="h",  # Horizontal legend
-#         yanchor="bottom",  # Anchor legend vertically at the bottom
-#         y=1.02,            # Position legend slightly above the graph
-#         xanchor="left",  # Center legend horizontally
-#         #x=0.5              # Position legend in the center
-#     ),
-#     width=1200,
-#     height=500,
-#     margin=dict(l=50, r=50, t=50, b=50),
-# )
-
-#     st.plotly_chart(fig_3,use_container_width=True)
 
 
 def debutants_stacked_bar(data):

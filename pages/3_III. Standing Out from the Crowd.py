@@ -37,13 +37,13 @@ st.markdown(
 )
 
 
-st.title("3. Standing Out from the Crowd")
+st.title("III. Standing Out from the Crowd")
 
 st.markdown(
     """
     <div style="text-align: left; font-size: 22px;">
-    Before digging deep into metrics that evaluate the competitiveness of the World Cup, let's talk broad performance trends. Who's winning the thing? In fact, who's winning the thing, again and again?
-    The USA are way out there. They have won the World Cup a record 4 times, and have finished in the top 4 in every World Cup except one -  the most recent one.
+    Before evaluating the competitiveness of the World Cup, let's talk broad performance trends. Who's winning the thing? In fact, who's winning the thing, again and again?
+    The USA are way out there. They have won the World Cup a record 4 times, and have finished in the top 4 in every World Cup except one — the most recent one in 2023.
     No other country comes close to their level of success.<br>
     <br>
      </div>""", unsafe_allow_html=True
@@ -245,16 +245,6 @@ st.markdown(
      </div>""", unsafe_allow_html=True
 )
 
-
-st.markdown(
-    """
-    <div style="text-align: left; font-size: 22px;">
-
-    From the dropdown box below, select a team to view their World Cup placings across time.
-
-     </div>""", unsafe_allow_html=True
-)
-
 # Sample data
 team_names = sorted(teams["Team"].unique())
 df_rankings = teams[["Team", "Rank", "Year"]].copy()
@@ -274,7 +264,7 @@ df_rankings['Year'] = df_rankings['Year'].astype(int)
 world_cup_years = list(range(1991, 2024, 4))
 
 # Team selection
-selected_team = st.selectbox("Choose a team", team_names)
+selected_team = st.selectbox("Choose a team to view their World Cup placings over time", team_names)
 
 # Filter and reindex to include all WC years
 team_df = df_rankings[df_rankings["Team"] == selected_team]
